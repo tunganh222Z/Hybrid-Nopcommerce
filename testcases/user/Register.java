@@ -22,9 +22,13 @@ public class Register extends BaseTest {
     @BeforeClass
     public void beforeClass(String browserName, String url){
         firstName = fakerConfig.getFirstName();
+
         lastName = fakerConfig.getLastName();
+
         email = fakerConfig.getEmail();
+
         password = fakerConfig.getPassword();
+
         confirmPassword = fakerConfig.getPassword();
 
         driver = getBrowserDriver(browserName, url);
