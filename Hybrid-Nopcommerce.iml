@@ -11,6 +11,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="libSelenium" level="project" />
+    <orderEntry type="library" name="libSelenium4.25.0" level="project" />
+    <orderEntry type="library" name="libFakerData" level="project" />
   </component>
 </module>

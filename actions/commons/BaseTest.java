@@ -5,6 +5,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+
 import java.io.IOException;
 import java.time.Duration;
 import java.util.Random;
@@ -16,9 +17,9 @@ public class BaseTest {
         if (browser == BrowserList.FIREFOX){
             driver = new FirefoxDriver();
         } else if (browser == BrowserList.CHROME){
-            driver = (WebDriver) new ChromeDriver();
+            driver = new ChromeDriver();
         } else if (browser == BrowserList.EDGE) {
-            driver = (WebDriver) new EdgeDriver();
+            driver = new EdgeDriver();
         } else {
             throw new RuntimeException("Browser name is not valid");
         }

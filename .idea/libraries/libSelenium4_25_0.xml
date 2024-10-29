@@ -1,0 +1,25 @@
+<component name="libraryTable">
+  <library name="libSelenium4.25.0">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libSelenium/jcommander-1.82.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libSelenium/selenium-api-4.25.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libSelenium/selenium-chrome-driver-4.25.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libSelenium/selenium-devtools-v85-4.25.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libSelenium/selenium-devtools-v127-4.25.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libSelenium/selenium-devtools-v128-4.25.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libSelenium/selenium-devtools-v129-4.25.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libSelenium/selenium-edge-driver-4.25.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libSelenium/selenium-firefox-driver-4.25.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libSelenium/selenium-ie-driver-4.25.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libSelenium/selenium-java-4.25.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libSelenium/selenium-remote-driver-4.25.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libSelenium/selenium-safari-driver-4.25.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libSelenium/selenium-server-4.25.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libSelenium/selenium-support-4.25.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libSelenium/slf4j-api-2.0.16.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libSelenium/testng-7.10.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
