@@ -277,20 +277,27 @@ public class BasePage {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(timeout));
     }
 
-    public boolean isELementUndisplayed(WebDriver driver, String locator){//
+    public boolean isELementUndisplayed(WebDriver driver, String locator){
+        boolean status;
         // Trước khi tìm element thì set time ngắn thôi
         setImplicitWait(driver, shortTimeOut);
+
         List<WebElement> elements = getListWebElements(driver, locator);
+
+        if (elements.size() >0){
+            if (elements.get(0).isDisplayed()){
+                status = false;
+            } else {
+                status = true;
+            }
+        } else {
+            status = true;
+        }
+
         //Trả lại timeout mặc định cho các step còn lại, nếu không setLong là từ sau cứ short thôi
         setImplicitWait(driver, longTimeOut);
-        if (elements.size() > 0 && elements.get(0).isDisplayed()){ // Element có trên UI và có trong DOM -> false
-            return false;
-        } else if (elements.size() == 1 && !elements.get(0).isDisplayed()){
-            // Element có trong DOM và không có trên UI
-            return true;
-        } else { // element không có trên UI và không có trong DOM
-            return true;
-        }
+
+        return status;
     }
 
 
