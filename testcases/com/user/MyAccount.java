@@ -1,4 +1,4 @@
-package user;
+package com.user;
 
 public class MyAccount {
 }

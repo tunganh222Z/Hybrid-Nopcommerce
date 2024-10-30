@@ -13,8 +13,8 @@ public class RegisterPageObject extends BaseActions {
 
 
     public void clickToRegisterButton() {
-        waitForElementVisible(driver, RegisterPageUI.FIRSTNAME_TEXTBOX);
-        sendkeyToElement(driver, RegisterPageUI.FIRSTNAME_TEXTBOX, firstName);
+        waitForElementVisible(driver, RegisterPageUI.REGISTER_BUTTON);
+        clickToElement(driver, RegisterPageUI.REGISTER_BUTTON);
     }
 
     public void enterToFirstNameTextbox(String firstName) {
@@ -51,5 +51,15 @@ public class RegisterPageObject extends BaseActions {
     public String getPasswordErrorMsg() {
         waitForElementVisible(driver, RegisterPageUI.PASSWORD_ERROR_MSG);
         return getWebElementText(driver, RegisterPageUI.PASSWORD_ERROR_MSG);
+    }
+
+    public String getExistingEmailErrorMsg() {
+        waitForElementVisible(driver, RegisterPageUI.EXISTING_EMAIL_ERROR_MSG);
+        return getWebElementText(driver, RegisterPageUI.EXISTING_EMAIL_ERROR_MSG);
+    }
+
+    public String getRegistrationCompletedMsg() {
+        waitForElementVisible(driver, RegisterPageUI.REGISTRATION_COMPLETED_MSG);
+        return getWebElementText(driver, RegisterPageUI.REGISTRATION_COMPLETED_MSG);
     }
 }

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<suite parallel = "false" name="Register_User">
+
+    <parameter name="browser" value="firefox"/>
+    <parameter name="url" value="http://localhost/"/>
+
+    <test name="Run on Firefox" preserve-order="true">
+        <classes>
+            <class name="com.user.Register"/>
+        </classes>
+    </test>
+
+</suite>

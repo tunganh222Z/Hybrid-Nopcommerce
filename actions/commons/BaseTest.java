@@ -11,7 +11,7 @@ import java.time.Duration;
 import java.util.Random;
 
 public class BaseTest {
-    WebDriver driver;
+     WebDriver driver;
     protected WebDriver getBrowserDriver(String browserName, String url){
         BrowserList browser = BrowserList.valueOf(browserName.toUpperCase());
         if (browser == BrowserList.FIREFOX){

@@ -1,6 +1,9 @@
 package commons;
 
 import org.openqa.selenium.WebDriver;
+import pageObjects.HomePageObject;
+import pageObjects.RegisterPageObject;
+import pageUIs.BaseActionsPageUI;
 
 public class BaseActions extends BasePage{
     WebDriver driver;
@@ -8,8 +11,21 @@ public class BaseActions extends BasePage{
         this.driver = driver;
     }
 
-    public void clickToRegisterLink() {
+    public RegisterPageObject clickToRegisterLink() {
         waitForElementClickable(driver, BaseActionsPageUI.REGISTER_LINK);
         clickToElement(driver, BaseActionsPageUI.REGISTER_LINK);
+        return PageGenerator.getRegisterPage(driver);
+    }
+
+    public HomePageObject clickNopcommerceLogo() {
+        waitForElementClickable(driver, BaseActionsPageUI.NOPCOMMERCE_LOGO);
+        clickToElement(driver, BaseActionsPageUI.NOPCOMMERCE_LOGO);
+        return PageGenerator.getHomePage(driver);
+    }
+
+    public HomePageObject clickToLogoutLink() {
+        waitForElementClickable(driver, BaseActionsPageUI.LOGOUT_LINK);
+        clickToElement(driver, BaseActionsPageUI.LOGOUT_LINK);
+        return PageGenerator.getHomePage(driver);
     }
 }
