@@ -2,6 +2,7 @@ package commons;
 
 import org.openqa.selenium.WebDriver;
 import pageObjects.HomePageObject;
+import pageObjects.LoginPageObjects;
 import pageObjects.RegisterPageObject;
 import pageUIs.BaseActionsPageUI;
 
@@ -27,5 +28,11 @@ public class BaseActions extends BasePage{
         waitForElementClickable(driver, BaseActionsPageUI.LOGOUT_LINK);
         clickToElement(driver, BaseActionsPageUI.LOGOUT_LINK);
         return PageGenerator.getHomePage(driver);
+    }
+
+    public LoginPageObjects clickToLoginLink() {
+        waitForElementClickable(driver, BaseActionsPageUI.LOGOUT_LINK);
+        clickToElement(driver, BaseActionsPageUI.LOGOUT_LINK);
+        return PageGenerator.getLoginPage(driver);
     }
 }

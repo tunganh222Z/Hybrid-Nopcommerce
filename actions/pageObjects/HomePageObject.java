@@ -9,4 +9,9 @@ public class HomePageObject extends BaseActions {
         super(driver);
         this.driver = driver;
     }
+
+    public String getHomePageTitle() {
+        sleepInSecond(2);
+        return getCurrentPageUrl(driver);
+    }
 }
