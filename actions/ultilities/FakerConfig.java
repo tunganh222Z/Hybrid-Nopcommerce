@@ -26,4 +26,8 @@ public class FakerConfig {
     public String getPassword(){
         return faker.internet().password(6, 12, true, true, true);
     }
+
+    public String getCompanyName(){
+        return faker.company().name();
+    }
 }

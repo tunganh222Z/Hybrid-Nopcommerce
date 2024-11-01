@@ -37,4 +37,14 @@ public class LoginPageObjects extends BaseActions {
         waitForElementVisible(driver, LoginPageUI.PASSWORD_TEXTBOX);
         sendkeyToElement(driver, LoginPageUI.PASSWORD_TEXTBOX, password);
     }
+
+    public HomePageObject logInForm(WebDriver driver, String email, String password) {
+        enterToEmailTextbox(email);
+
+        enterToPasswordTextbox(password);
+
+        clickToLoginButton();
+
+        return PageGenerator.getHomePage(driver);
+    }
 }

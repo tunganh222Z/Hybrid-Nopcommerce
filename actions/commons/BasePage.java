@@ -270,7 +270,26 @@ public class BasePage {
     //Case 1 : Element hiền thị và có trong HTML
     // Case 2 : Element hiển thị và không có trong HTML
     public boolean isElementDisplayed(WebDriver driver, String locator) {
-        return getWebElement(driver, locator).isDisplayed();
+        boolean status;
+        // Trước khi tìm element thì set time ngắn thôi
+        setImplicitWait(driver, shortTimeOut);
+
+        List<WebElement> elements = getListWebElements(driver, locator);
+
+        if (elements.size() >0){
+            if (elements.get(0).isDisplayed()){
+                status = true;
+            } else {
+                status = false;
+            }
+        } else {
+            status = false;
+        }
+
+        //Trả lại timeout mặc định cho các step còn lại, nếu không setLong là từ sau cứ short thôi
+        setImplicitWait(driver, longTimeOut);
+
+        return status;
     }
 
     public void setImplicitWait(WebDriver driver, long timeout){

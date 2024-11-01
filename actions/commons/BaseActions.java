@@ -3,6 +3,7 @@ package commons;
 import org.openqa.selenium.WebDriver;
 import pageObjects.HomePageObject;
 import pageObjects.LoginPageObjects;
+import pageObjects.myAccount.CustomerInfoPageObject;
 import pageObjects.RegisterPageObject;
 import pageUIs.BaseActionsPageUI;
 
@@ -34,5 +35,11 @@ public class BaseActions extends BasePage{
         waitForElementClickable(driver, BaseActionsPageUI.LOGIN_LINK);
         clickToElement(driver, BaseActionsPageUI.LOGIN_LINK);
         return PageGenerator.getLoginPage(driver);
+    }
+
+    public CustomerInfoPageObject clickToMyAccountLink() {
+        waitForElementClickable(driver, BaseActionsPageUI.MY_ACCOUNT_LINK);
+        clickToElement(driver, BaseActionsPageUI.MY_ACCOUNT_LINK);
+        return PageGenerator.getMyAccountPage(driver);
     }
 }
