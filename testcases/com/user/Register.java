@@ -15,7 +15,7 @@ public class Register extends BaseTest {
     private WebDriver driver;
     private HomePageObject homePage;
     private RegisterPageObject registerPage;
-    private String firstName, lastName, password, email;
+    public static String firstName, lastName, password, email;
     private String invalidEmail, invalidPassword;
     private FakerConfig fakerConfig;
 
@@ -158,6 +158,8 @@ public class Register extends BaseTest {
         registerPage.clickToRegisterButton();
 
         Assert.assertEquals(registerPage.getErrorMsgByTextboxLabel("Confirm password"), "The password and confirmation password do not match.");
+
+        homePage = registerPage.clickNopcommerceLogo();
     }
 
 

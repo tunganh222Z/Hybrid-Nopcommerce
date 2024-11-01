@@ -1,7 +1,6 @@
 package pageObjects;
 
 import commons.BaseActions;
-import commons.BaseTest;
 import commons.PageGenerator;
 import org.openqa.selenium.WebDriver;
 import pageUIs.LoginPageUI;
@@ -14,15 +13,13 @@ public class LoginPageObjects extends BaseActions {
     }
 
     public String getLoginErrorMsg() {
-        String errorLoginMsg ="";
-        errorLoginMsg = getWebElementText(driver, LoginPageUI.ERROR_LOGIN_MSG_1) + "\n" + getWebElement(driver,LoginPageUI.ERROR_LOGIN_MSG_2);
-        errorLoginMsg.trim();
-        return errorLoginMsg;
+        waitForElementVisible(driver, LoginPageUI.ERROR_LOGIN_MSG);
+        return getWebElementText(driver, LoginPageUI.ERROR_LOGIN_MSG) ;
     }
 
     public HomePageObject clickToLoginButton() {
-        waitForElementClickable(driver, LoginPageUI.LOGIN_BUTTON());
-        clickToElement(driver, LoginPageUI.LOGIN_BUTTON());
+        waitForElementClickable(driver, LoginPageUI.LOGIN_BUTTON);
+        clickToElement(driver, LoginPageUI.LOGIN_BUTTON);
         return PageGenerator.getHomePage(driver);
     }
 

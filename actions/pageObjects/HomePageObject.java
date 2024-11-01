@@ -12,6 +12,6 @@ public class HomePageObject extends BaseActions {
 
     public String getHomePageTitle() {
         sleepInSecond(2);
-        return getCurrentPageUrl(driver);
+        return getPageTitle(driver);
     }
 }

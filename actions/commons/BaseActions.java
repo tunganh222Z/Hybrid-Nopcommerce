@@ -31,8 +31,8 @@ public class BaseActions extends BasePage{
     }
 
     public LoginPageObjects clickToLoginLink() {
-        waitForElementClickable(driver, BaseActionsPageUI.LOGOUT_LINK);
-        clickToElement(driver, BaseActionsPageUI.LOGOUT_LINK);
+        waitForElementClickable(driver, BaseActionsPageUI.LOGIN_LINK);
+        clickToElement(driver, BaseActionsPageUI.LOGIN_LINK);
         return PageGenerator.getLoginPage(driver);
     }
 }
