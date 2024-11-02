@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<suite parallel = "false" name="Nopcommerce_User_Login">
+
+    <listeners>
+        <listener class-name="commons.MethodListener"/>
+        <listener class-name="reportConfig.AllureTestListener"/>
+    </listeners>
+
+    <parameter name="browser" value="firefox"/>
+    <parameter name="url" value="http://localhost/"/>
+
+    <test name="Run on Firefox" preserve-order="true">
+        <classes>
+            <class name="com.user.Register">
+                    <methods>
+                        <include name="Register_03_Register_With_Valid_Data"/>
+                    </methods>
+            </class>
+            <class name="com.user.Login"/>
+        </classes>
+    </test>
+
+</suite>

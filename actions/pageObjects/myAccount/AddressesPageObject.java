@@ -161,7 +161,7 @@ public class AddressesPageObject extends MyAccountSideBarPageObject{
     }
 
     @Step("Verify Address has been Updated Successfully bar is displayed")
-    public String isUpdatedSuccessfullyDisplayed() {
+    public String getStatusNotifyBar() {
         waitForElementVisible(driver, AddressesPageUI.UPDATED_SUCCESSFULLY_NOTIFY);
         return getWebElementText(driver, AddressesPageUI.UPDATED_SUCCESSFULLY_NOTIFY);
     }
