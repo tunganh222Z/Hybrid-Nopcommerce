@@ -43,8 +43,8 @@ public class Register extends BaseTest {
         homePage = PageGenerator.getHomePage(driver);
         registerPage = homePage.clickToRegisterLink();
     }
-    @Description("Register 01_Register with empty data")
-    @Story("Register")
+    @Description("Register 01_Register with empty data then verify error message")
+    @Story("Register_With_Empty_Data")
     @Test
     public void Register_01_Register_With_Empty_Data(){
         registerPage.clickToRegisterButton();
@@ -60,8 +60,8 @@ public class Register extends BaseTest {
         homePage = registerPage.clickNopcommerceLogo();
     }
 
-    @Description("Register 02_Register with invalid email")
-    @Story("Register")
+    @Description("Register 02_Register with invalid email then verify error message")
+    @Story("Register_With_Invalid_Email")
     @Test
     public void Register_02_Register_With_Invalid_Email(){
         registerPage = homePage.clickToRegisterLink();
@@ -83,8 +83,8 @@ public class Register extends BaseTest {
         homePage = registerPage.clickNopcommerceLogo();
     }
 
-    @Description("Register 03_Register with valid data")
-    @Story("Register")
+    @Description("Register with valid data then verify error message")
+    @Story("Register_With_Valid_Data")
     @Test
     public void Register_03_Register_With_Valid_Data(){
         registerPage = homePage.clickToRegisterLink();
@@ -106,8 +106,8 @@ public class Register extends BaseTest {
         homePage=  registerPage.clickToLogoutLink();
     }
 
-    @Description("Register 04_Register with existing email")
-    @Story("Register")
+    @Description("Register with existing email then verify error message")
+    @Story("Register_With_Existing_Email")
     @Test
     public void Register_04_Register_With_Existing_Email(){
         registerPage = homePage.clickToRegisterLink();
@@ -129,8 +129,8 @@ public class Register extends BaseTest {
         homePage = registerPage.clickNopcommerceLogo();
     }
 
-    @Description("Register 05_Register with password less than 6 characters")
-    @Story("Register")
+    @Description("Register with password less than 6 characters then verify error message")
+    @Story("Register_With_Password_Less_Than_6_Chars")
     @Test
     public void Register_05_Register_With_Password_Less_Than_6_Chars(){
         registerPage = homePage.clickToRegisterLink();
@@ -152,8 +152,8 @@ public class Register extends BaseTest {
         homePage = registerPage.clickNopcommerceLogo();
     }
 
-    @Description("Register 06_Register with confirm password not match")
-    @Story("Register")
+    @Description("Register with confirm password not match then verify error message")
+    @Story("Register_With_Confirm_Password_Not_Match")
     @Test
     public void Register_06_Register_With_Confirm_Password_Not_Match(){
         registerPage = homePage.clickToRegisterLink();

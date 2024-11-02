@@ -7,5 +7,5 @@ public class CustomerInfoPageUI {
     public static final String FEMALE_RADIO_BUTTON = "css=input#gender-female";
     public static final String COMPANY_NAME_TEXTBOX = "css=input#Company";
     public static final String SAVE_BUTTON = "css=button#save-info-button";
-    public static final String UPDATED_SUCCESSFULLY_NOTIFY = "css=div.bar-notification>p";
+    public static final String STATUS_NOTIFY_BAR = "css=div.bar-notification>p";
 }

@@ -8,6 +8,8 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Set;
 
@@ -506,6 +508,13 @@ public class BasePage {
                 .keyDown(Keys.LEFT_CONTROL).sendKeys("a")
                 .keyUp(Keys.LEFT_CONTROL).sendKeys(Keys.DELETE)
                 .sendKeys(keyToSend).perform();
+    }
+
+    public String getDateTimeNow(String dateTimeFormatter){
+        LocalDateTime now = LocalDateTime.now();
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(dateTimeFormatter);
+        return String.valueOf(now.format(formatter));
     }
 
     private long longTimeOut = GlobalConstant.LONG_TIMEOUT;

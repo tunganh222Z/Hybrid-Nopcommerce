@@ -3,9 +3,14 @@ package commons;
 import org.openqa.selenium.WebDriver;
 import pageObjects.HomePageObject;
 import pageObjects.LoginPageObjects;
+import pageObjects.categories.MainCategoryPageObject;
+import pageObjects.categories.ProductPageObject;
+import pageObjects.categories.SubCategoryPageObject;
 import pageObjects.myAccount.AddressesPageObject;
+import pageObjects.myAccount.ChangePasswordPageObject;
 import pageObjects.myAccount.CustomerInfoPageObject;
 import pageObjects.RegisterPageObject;
+import pageObjects.myAccount.MyProductReviewsPageObject;
 
 public class PageGenerator {
     WebDriver driver;
@@ -31,5 +36,25 @@ public class PageGenerator {
 
     public static AddressesPageObject getAddressesPage(WebDriver driver){
         return new AddressesPageObject(driver);
+    }
+
+    public static ChangePasswordPageObject getChangePasswordPage(WebDriver driver){
+        return new ChangePasswordPageObject(driver);
+    }
+
+    public static MainCategoryPageObject getMainCategoryPage(WebDriver driver) {
+        return new MainCategoryPageObject(driver);
+    }
+
+    public static SubCategoryPageObject getSubCategoryPage(WebDriver driver) {
+        return new SubCategoryPageObject(driver);
+    }
+
+    public static ProductPageObject getProductPage(WebDriver driver) {
+        return new ProductPageObject(driver);
+    }
+
+    public static MyProductReviewsPageObject getMyProductReviewsPage(WebDriver driver) {
+        return new MyProductReviewsPageObject(driver);
     }
 }

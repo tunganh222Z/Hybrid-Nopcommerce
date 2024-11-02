@@ -49,12 +49,6 @@ public class CustomerInfoPageObject extends MyAccountSideBarPageObject {
         clickToElement(driver, CustomerInfoPageUI.SAVE_BUTTON);
     }
 
-    @Step("Verify Updated Successfully bar is displayed")
-    public String isUpdatedSuccessfullyDisplayed() {
-        waitForElementVisible(driver, CustomerInfoPageUI.UPDATED_SUCCESSFULLY_NOTIFY);
-        return getWebElementText(driver, CustomerInfoPageUI.UPDATED_SUCCESSFULLY_NOTIFY);
-    }
-
     @Step("Get Firstname value textbox")
     public String getFirstNameValueTextbox() {
         waitForElementVisible(driver, CustomerInfoPageUI.FIRST_NAME_TEXTBOX );

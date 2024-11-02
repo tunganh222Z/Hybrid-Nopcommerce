@@ -38,7 +38,7 @@ public class Login extends BaseTest {
         emailNotRegiestered = "tunganh222224@gmail.com";
         incorrectPassword = Register.password + "123";
     }
-    @Description("Login with empty data")
+    @Description("Login with empty data then verify error message")
     @Story("Login_01")
     @Test
     public void Login_01_Login_With_Empty_Data(){
@@ -47,7 +47,7 @@ public class Login extends BaseTest {
         verifyEqual(loginPage.getErrorEmailMsg(), "Please enter your email");
     }
 
-    @Description("Login with invalid email")
+    @Description("Login with invalid email then verify error message")
     @Story("Login_02")
     @Test
     public void Login_02_Login_With_Invalid_Email(){
@@ -60,7 +60,7 @@ public class Login extends BaseTest {
         verifyEqual(loginPage.getErrorEmailMsg(), "Please enter a valid email address.");
     }
 
-    @Description("Login with email not registered")
+    @Description("Login with email not registered then verify error message")
     @Story("Login_03")
     @Test
     public void Login_03_Login_With_Email_Not_Registered(){
@@ -73,7 +73,7 @@ public class Login extends BaseTest {
         verifyEqual(loginPage.getLoginErrorMsg(), "Login was unsuccessful. Please correct the errors and try again.\nNo customer account found");
     }
 
-    @Description("Login with valid email and no password")
+    @Description("Login with valid email and no password then verify error message")
     @Story("Login_04")
     @Test
     public void Login_04_Login_With_Valid_Email_No_Password(){
@@ -86,7 +86,7 @@ public class Login extends BaseTest {
         verifyEqual(loginPage.getLoginErrorMsg(), "Login was unsuccessful. Please correct the errors and try again.\nThe credentials provided are incorrect");
     }
 
-    @Description("Login with valid email and incorrect password")
+    @Description("Login with valid email and incorrect password then verify error message")
     @Story("Login_05")
     @Test
     public void Login_05_Login_With_Valid_Email_Incorrect_Password(){
