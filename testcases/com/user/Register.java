@@ -2,15 +2,17 @@ package com.user;
 
 import commons.BaseTest;
 import commons.PageGenerator;
-import net.datafaker.Faker;
+import io.qameta.allure.Description;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.devtools.v85.page.Page;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import pageObjects.HomePageObject;
 import pageObjects.RegisterPageObject;
 import ultilities.FakerConfig;
 
+@Feature("Register")
 public class Register extends BaseTest {
     private WebDriver driver;
     private HomePageObject homePage;
@@ -41,7 +43,8 @@ public class Register extends BaseTest {
         homePage = PageGenerator.getHomePage(driver);
         registerPage = homePage.clickToRegisterLink();
     }
-
+    @Description("Register 01_Register with empty data")
+    @Story("Register")
     @Test
     public void Register_01_Register_With_Empty_Data(){
         registerPage.clickToRegisterButton();
@@ -57,6 +60,8 @@ public class Register extends BaseTest {
         homePage = registerPage.clickNopcommerceLogo();
     }
 
+    @Description("Register 02_Register with invalid email")
+    @Story("Register")
     @Test
     public void Register_02_Register_With_Invalid_Email(){
         registerPage = homePage.clickToRegisterLink();
@@ -78,6 +83,8 @@ public class Register extends BaseTest {
         homePage = registerPage.clickNopcommerceLogo();
     }
 
+    @Description("Register 03_Register with valid data")
+    @Story("Register")
     @Test
     public void Register_03_Register_With_Valid_Data(){
         registerPage = homePage.clickToRegisterLink();
@@ -99,6 +106,8 @@ public class Register extends BaseTest {
         homePage=  registerPage.clickToLogoutLink();
     }
 
+    @Description("Register 04_Register with existing email")
+    @Story("Register")
     @Test
     public void Register_04_Register_With_Existing_Email(){
         registerPage = homePage.clickToRegisterLink();
@@ -120,6 +129,8 @@ public class Register extends BaseTest {
         homePage = registerPage.clickNopcommerceLogo();
     }
 
+    @Description("Register 05_Register with password less than 6 characters")
+    @Story("Register")
     @Test
     public void Register_05_Register_With_Password_Less_Than_6_Chars(){
         registerPage = homePage.clickToRegisterLink();
@@ -141,6 +152,8 @@ public class Register extends BaseTest {
         homePage = registerPage.clickNopcommerceLogo();
     }
 
+    @Description("Register 06_Register with confirm password not match")
+    @Story("Register")
     @Test
     public void Register_06_Register_With_Confirm_Password_Not_Match(){
         registerPage = homePage.clickToRegisterLink();

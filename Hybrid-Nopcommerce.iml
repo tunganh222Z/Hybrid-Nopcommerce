@@ -13,5 +13,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="libSelenium4.25.0" level="project" />
     <orderEntry type="library" name="libFakerData" level="project" />
+    <orderEntry type="library" name="libAllureReport" level="project" />
   </component>
 </module>

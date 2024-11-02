@@ -4,14 +4,19 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.Assert;
+import org.testng.Reporter;
+import org.testng.annotations.BeforeSuite;
 
 
+import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
 import java.util.Random;
 
 public class BaseTest {
      WebDriver driver;
+
     protected WebDriver getBrowserDriver(String browserName, String url){
         BrowserList browser = BrowserList.valueOf(browserName.toUpperCase());
         if (browser == BrowserList.FIREFOX){
@@ -82,10 +87,78 @@ public class BaseTest {
         }
     }
 
+    protected boolean verifyTrue(boolean condition){
+        boolean status = true;
+        try{
+            Assert.assertTrue(condition);
+//            log.info("------------Passed------------");
+        } catch (Throwable e) { // Phải dùng Throwable thì sẽ không dùng lại, Exception sẽ dừng lại khi không thỏa mãn
+            status = false;
+//            log.info("------------Fail------------");
+            VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
+            Reporter.getCurrentTestResult().setThrowable(e);
+        }
+        return status;
+    }
+
+    protected Boolean verifyFalse(boolean condition){
+        boolean status = true;
+        try{
+            Assert.assertFalse(condition);
+//            log.info("------------Passed------------");
+        } catch (Throwable e) { // Phải dùng Throwable thì sẽ không dùng lại, Exception sẽ dừng lại khi không thỏa mãn
+            status = false;
+//            log.info("------------Fail------------");
+            VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
+            Reporter.getCurrentTestResult().setThrowable(e);
+        }
+        return status;
+    }
+
+    protected boolean verifyEqual(Object actual, Object expected){
+        boolean status = true;
+        try{
+            Assert.assertEquals(actual, expected);
+//            log.info("------------Passed------------");
+        } catch (Throwable e) { // Phải dùng Throwable thì sẽ không dùng lại, Exception sẽ dừng lại khi không thỏa mãn
+            status = false;
+//            log.info("------------Fail------------");
+            VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
+            Reporter.getCurrentTestResult().setThrowable(e);
+        }
+        return status;
+    }
+
     protected String getRandom(){
         Random rand = new Random();
         int x = rand.nextInt(1,999999);
         return Integer.toString(x);
+    }
+
+    @BeforeSuite
+    public void deleteFileInReport(){
+        deleteAllFileInFolder("allure-json");
+    }
+
+    public void deleteAllFileInFolder(String folderName) {
+        try {
+            String pathFolderDownload = GlobalConstant.RELATIVE_PATH + File.separator + folderName;
+            File file = new File(pathFolderDownload);
+            File[] listOfFiles = file.listFiles();
+            if (listOfFiles.length != 0) {
+                for (int i = 0; i < listOfFiles.length; i++) {
+                    if (listOfFiles[i].isFile() && !listOfFiles[i].getName().equals("environment.properties")) {
+                        new File(listOfFiles[i].toString()).delete();
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.out.print(e.getMessage());
+        }
+    }
+
+    public WebDriver getDriver() {
+        return driver;
     }
 
 }
