@@ -1,11 +1,10 @@
 package pageObjects.myAccount;
 
-import commons.BaseActions;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import pageUIs.myAccount.CustomerInfoPageUI;
 
-public class CustomerInfoPageObject extends BaseActions {
+public class CustomerInfoPageObject extends MyAccountSideBarPageObject {
     WebDriver driver;
     public CustomerInfoPageObject(WebDriver driver){
         super(driver);

@@ -14,6 +14,7 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pageObjects.HomePageObject;
 import pageObjects.LoginPageObjects;
+import pageObjects.myAccount.AddressesPageObject;
 import pageObjects.myAccount.CustomerInfoPageObject;
 import ultilities.FakerConfig;
 
@@ -23,7 +24,9 @@ public class MyAccount extends BaseTest {
     private HomePageObject homePage;
     private LoginPageObjects loginPage;
     private CustomerInfoPageObject customerInfoPage;
+    private AddressesPageObject addressesPage;
     private String email, password, firstname, lastname, companyName, newEmail;
+    private String country, stateProvince, city, address1, address2, zipPostalCode, phoneNumber, faxNumber;
     private FakerConfig fakerConfig;
 
     @Parameters ({"browser","url"})
@@ -35,6 +38,8 @@ public class MyAccount extends BaseTest {
         email = Register.email; password = Register.password;
         firstname = "Automation"; lastname = "FC";
         newEmail = fakerConfig.getEmail(); companyName = fakerConfig.getCompanyName();
+        country = "Vietnam"; stateProvince = "Bắc Kạn"; city = "Bắc Kạn city"; address1 = "8b Đức Xuân"; address2 = "Phường Đức Xuân";
+        zipPostalCode = "970000"; phoneNumber = "03766366833333"; faxNumber = "0123455668";
 
         homePage = PageGenerator.getHomePage(driver);
 
@@ -61,24 +66,74 @@ public class MyAccount extends BaseTest {
 
         customerInfoPage.clickToSaveButton();
 
-        Assert.assertEquals(customerInfoPage.isUpdatedSuccessfullyDisplayed(),"The customer info has been updated successfully.");
+        verifyEqual(customerInfoPage.isUpdatedSuccessfullyDisplayed(),"The customer info has been updated successfully.");
 
         Assert.assertTrue(customerInfoPage.isFemaleGenderSelected());
 
-        Assert.assertEquals(customerInfoPage.getFirstNameValueTextbox(), firstname);
+        verifyEqual(customerInfoPage.getFirstNameValueTextbox(), firstname);
 
-        Assert.assertEquals(customerInfoPage.getLastNameValueTextbox(), lastname);
+        verifyEqual(customerInfoPage.getLastNameValueTextbox(), lastname);
 
-        Assert.assertEquals(customerInfoPage.getEmailValueTextbox(), newEmail);
+        verifyEqual(customerInfoPage.getEmailValueTextbox(), newEmail);
 
-        Assert.assertEquals(customerInfoPage.getCompanyNameValueTextbox(), companyName);
+        verifyEqual(customerInfoPage.getCompanyNameValueTextbox(), companyName);
+
+        addressesPage = customerInfoPage.openAddressesPage();
     }
 
     @Description("Update Addresses info")
     @Story("My_Account_02_Addresses")
     @Test
     public void My_Account_02_Addresses(){
+        addressesPage.clickToAddNewButton();
 
+        addressesPage.enterToFirstNameTextbox(firstname);
+
+        addressesPage.enterToLastNameTextbox(lastname);
+
+        addressesPage.enterToEmailTextbox(newEmail);
+
+        addressesPage.enterToCompanyTextbox(companyName);
+
+        addressesPage.selectCountryDropdown(country);
+
+        addressesPage.selectStateProvinceDropdown(stateProvince);
+
+        addressesPage.enterToCityTextbox(city);
+
+        addressesPage.enterToAddress1Textbox(address1);
+
+        addressesPage.enterToAddress2Textbox(address2);
+
+        addressesPage.enterToZipPostalCodeTextbox(zipPostalCode);
+
+        addressesPage.enterToPhoneNumberTextbox(phoneNumber);
+
+        addressesPage.enterToFaxNumberTextbox(faxNumber);
+
+        addressesPage.clickToSaveButton();
+
+        verifyEqual(addressesPage.getFirstNameValueTextbox(), firstname+" "+lastname);
+
+        verifyEqual(addressesPage.getEmailValueTextbox(), "Email: "+newEmail);
+
+        verifyEqual(addressesPage.getCompanyValueTextbox(), companyName);
+
+        verifyEqual(addressesPage.getCountryValueDropdown(), country);
+
+        verifyEqual(addressesPage.getStateProvinceValueDropdown(), stateProvince);
+
+        verifyEqual(addressesPage.getCityValueTextbox(), city);
+
+        verifyEqual(addressesPage.getAddress1ValueTextbox(), address1);
+
+        verifyEqual(addressesPage.getAddress2ValueTextbox(), address2);
+
+        verifyEqual(addressesPage.getZipPostalCodeValueTextbox(), zipPostalCode);
+
+        verifyEqual(addressesPage.getPhoneNumberValueTextbox(), "Phone number: " + phoneNumber);
+
+        verifyEqual(addressesPage.getFaxNumberValueTextbox(), "Fax number: " + faxNumber);
     }
 
     @Test

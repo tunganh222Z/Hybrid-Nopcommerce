@@ -49,13 +49,13 @@ public class Register extends BaseTest {
     public void Register_01_Register_With_Empty_Data(){
         registerPage.clickToRegisterButton();
 
-        Assert.assertEquals(registerPage.getErrorMsgByTextboxLabel("First name"), "First name is required.");
+        verifyEqual(registerPage.getErrorMsgByTextboxLabel("First name"), "First name is required.");
 
-        Assert.assertEquals(registerPage.getErrorMsgByTextboxLabel("Last name"), "Last name is required.");
+        verifyEqual(registerPage.getErrorMsgByTextboxLabel("Last name"), "Last name is required.");
 
-        Assert.assertEquals(registerPage.getErrorMsgByTextboxLabel("Email"), "Email is required.");
+        verifyEqual(registerPage.getErrorMsgByTextboxLabel("Email"), "Email is required.");
 
-        Assert.assertEquals(registerPage.getErrorMsgByTextboxLabel("Confirm password"), "Password is required.");
+        verifyEqual(registerPage.getErrorMsgByTextboxLabel("Confirm password"), "Password is required.");
 
         homePage = registerPage.clickNopcommerceLogo();
     }
@@ -78,7 +78,7 @@ public class Register extends BaseTest {
 
         registerPage.clickToRegisterButton();
 
-        Assert.assertEquals(registerPage.getErrorMsgByTextboxLabel("Email"), "Please enter a valid email address.");
+        verifyEqual(registerPage.getErrorMsgByTextboxLabel("Email"), "Please enter a valid email address.");
 
         homePage = registerPage.clickNopcommerceLogo();
     }
@@ -101,7 +101,7 @@ public class Register extends BaseTest {
 
         registerPage.clickToRegisterButton();
 
-        Assert.assertEquals(registerPage.getRegistrationCompletedMsg(), "Your registration completed");
+        verifyEqual(registerPage.getRegistrationCompletedMsg(), "Your registration completed");
 
         homePage=  registerPage.clickToLogoutLink();
     }
@@ -124,7 +124,7 @@ public class Register extends BaseTest {
 
         registerPage.clickToRegisterButton();
 
-        Assert.assertEquals(registerPage.getExistingEmailErrorMsg(), "The specified email already exists");
+        verifyEqual(registerPage.getExistingEmailErrorMsg(), "The specified email already exists");
 
         homePage = registerPage.clickNopcommerceLogo();
     }
@@ -147,7 +147,7 @@ public class Register extends BaseTest {
 
         registerPage.clickToRegisterButton();
 
-        Assert.assertEquals(registerPage.getPasswordErrorMsg(), "<p>must meet the following rules: </p><ul><li>must have at least 6 characters and not greater than 64 characters</li></ul>");
+        verifyEqual(registerPage.getPasswordErrorMsg(), "<p>must meet the following rules: </p><ul><li>must have at least 6 characters and not greater than 64 characters</li></ul>");
 
         homePage = registerPage.clickNopcommerceLogo();
     }
@@ -170,7 +170,7 @@ public class Register extends BaseTest {
 
         registerPage.clickToRegisterButton();
 
-        Assert.assertEquals(registerPage.getErrorMsgByTextboxLabel("Confirm password"), "The password and confirmation password do not match.");
+        verifyEqual(registerPage.getErrorMsgByTextboxLabel("Confirm password"), "The password and confirmation password do not match.");
 
         homePage = registerPage.clickNopcommerceLogo();
     }

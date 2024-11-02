@@ -44,7 +44,7 @@ public class Login extends BaseTest {
     public void Login_01_Login_With_Empty_Data(){
         loginPage.clickToLoginButton();
 
-        Assert.assertEquals(loginPage.getErrorEmailMsg(), "Please enter your email");
+        verifyEqual(loginPage.getErrorEmailMsg(), "Please enter your email");
     }
 
     @Description("Login with invalid email")
@@ -57,7 +57,7 @@ public class Login extends BaseTest {
 
         loginPage.clickToLoginButton();
 
-        Assert.assertEquals(loginPage.getErrorEmailMsg(), "Please enter a valid email address.");
+        verifyEqual(loginPage.getErrorEmailMsg(), "Please enter a valid email address.");
     }
 
     @Description("Login with email not registered")
@@ -70,7 +70,7 @@ public class Login extends BaseTest {
 
         loginPage.clickToLoginButton();
 
-        Assert.assertEquals(loginPage.getLoginErrorMsg(), "Login was unsuccessful. Please correct the errors and try again.\nNo customer account found");
+        verifyEqual(loginPage.getLoginErrorMsg(), "Login was unsuccessful. Please correct the errors and try again.\nNo customer account found");
     }
 
     @Description("Login with valid email and no password")
@@ -83,7 +83,7 @@ public class Login extends BaseTest {
 
         loginPage.clickToLoginButton();
 
-        Assert.assertEquals(loginPage.getLoginErrorMsg(), "Login was unsuccessful. Please correct the errors and try again.\nThe credentials provided are incorrect");
+        verifyEqual(loginPage.getLoginErrorMsg(), "Login was unsuccessful. Please correct the errors and try again.\nThe credentials provided are incorrect");
     }
 
     @Description("Login with valid email and incorrect password")
@@ -96,7 +96,7 @@ public class Login extends BaseTest {
 
         loginPage.clickToLoginButton();
 
-        Assert.assertEquals(loginPage.getLoginErrorMsg(), "Login was unsuccessful. Please correct the errors and try again.\nThe credentials provided are incorrect");
+        verifyEqual(loginPage.getLoginErrorMsg(), "Login was unsuccessful. Please correct the errors and try again.\nThe credentials provided are incorrect");
     }
 
     @Description("Login with valid email and password")
@@ -109,7 +109,7 @@ public class Login extends BaseTest {
 
         homePage = loginPage.clickToLoginButton();
 
-        Assert.assertEquals(homePage.getHomePageTitle(), "Your store. Home page title");
+        verifyEqual(homePage.getHomePageTitle(), "Your store. Home page title");
     }
 
 
