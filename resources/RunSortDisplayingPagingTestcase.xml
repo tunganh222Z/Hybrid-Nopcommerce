@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<suite parallel = "false" name="Nopcommerce_User_Register">
+
+    <listeners>
+        <listener class-name="commons.MethodListener"/>
+        <listener class-name="reportConfig.AllureTestListener"/>
+    </listeners>
+
+    <parameter name="browser" value="firefox"/>
+    <parameter name="url" value="http://localhost/"/>
+
+    <test name="Run on Firefox" >
+        <classes>
+            <class name="com.user.SortDisplayPaging"/>
+        </classes>
+    </test>
+
+</suite>
