@@ -1,16 +1,14 @@
 package commons;
 
 import org.openqa.selenium.WebDriver;
-import pageObjects.HomePageObject;
-import pageObjects.LoginPageObjects;
-import pageObjects.SearchPageObject;
+import pageObjects.*;
+import pageObjects.categories.CompareProductsListPageObject;
 import pageObjects.categories.MainCategoryPageObject;
 import pageObjects.categories.ProductPageObject;
 import pageObjects.categories.SubCategoryPageObject;
 import pageObjects.myAccount.AddressesPageObject;
 import pageObjects.myAccount.ChangePasswordPageObject;
 import pageObjects.myAccount.CustomerInfoPageObject;
-import pageObjects.RegisterPageObject;
 import pageObjects.myAccount.MyProductReviewsPageObject;
 
 public class PageGenerator {
@@ -61,5 +59,13 @@ public class PageGenerator {
 
     public static SearchPageObject getSearchPage(WebDriver driver) {
         return new SearchPageObject(driver);
+    }
+
+    public static WishlistPageObject getWishlistPage(WebDriver driver){
+        return new WishlistPageObject(driver);
+    }
+
+    public static CompareProductsListPageObject getCompareProductsList(WebDriver driver){
+        return new CompareProductsListPageObject(driver);
     }
 }

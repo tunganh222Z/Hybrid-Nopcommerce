@@ -56,15 +56,16 @@ public class BaseActions extends BasePage{
         clickToElement(driver, BaseActionsPageUI.DYNAMIC_MODULE_HEADER_MENU, module);
     }
 
-    @Step("Click Close button to close Notify Bar")
+    @Step("Click Close button to close Notify Bar and Wait Notify Bar invisible")
     public void clickToCloseNotifyBar() {
         waitForElementClickable(driver, BaseActionsPageUI.NOTIFY_BAR_CLOSE_BUTTON);
         clickToElement(driver, BaseActionsPageUI.NOTIFY_BAR_CLOSE_BUTTON);
+        waitForElementInvisible(driver, BaseActionsPageUI.NOTFY_BAR);
     }
 
     @Step("Wait Notify Bar invisible")
     public void waitNotifyBarInvisible() {
-        waitForElementInvisible(driver, BaseActionsPageUI.NOTFY_BAR);
+
     }
 
     @Step("Verify Updated Successfully bar is displayed")
@@ -94,5 +95,9 @@ public class BaseActions extends BasePage{
     @Step("Click to Accept in Search alert")
     public void clickAcceptInSearchAlert() {
         acceptToAlert(driver);
+    }
+
+    public void waitAjaxLoadingInvisible() {
+        waitForElementInvisible(driver, BaseActionsPageUI.AJAX_LOADING_ICON);
     }
 }

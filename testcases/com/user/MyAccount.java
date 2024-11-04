@@ -173,8 +173,6 @@ public class MyAccount extends BaseTest {
 
         changePasswordPage.clickToCloseNotifyBar();
 
-        changePasswordPage.waitNotifyBarInvisible();
-
         homePage = changePasswordPage.clickToLogoutLink();
 
         //login with old password
@@ -224,7 +222,6 @@ public class MyAccount extends BaseTest {
         dateReviewed = productPage.getDateReviewed();
 
         productPage.clickToCloseNotifyBar();
-        productPage.waitNotifyBarInvisible();
 
         customerInfoPage =  productPage.clickToMyAccountLink();
 

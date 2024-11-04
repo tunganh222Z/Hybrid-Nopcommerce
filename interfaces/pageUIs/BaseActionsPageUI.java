@@ -11,4 +11,5 @@ public class BaseActionsPageUI {
     public static final String DYNAMIC_MODULE_HEADER_MENU = "xpath=//ul[@class='top-menu notmobile']/li/a[contains(text(),'%s')]";
     public static final String SEARCH_TEXTBOX = "css=div.search-box>form>input";
     public static final String SEARCH_BUTTON = "css=div.search-box>form>button";
+    public static final String AJAX_LOADING_ICON = "xpath=//div[@class='ajax-loading-block-window']";
 }

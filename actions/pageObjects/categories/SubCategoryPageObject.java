@@ -32,6 +32,8 @@ public class SubCategoryPageObject extends MainCategoryPageObject{
 
     @Step("Verify product name sort by Descending")
     public boolean isProductsNameSortByDescending() {
+        waitForListElementsVisible(driver, SubCategoryPageUI.PRODUCTS_NAME);
+
         List<WebElement> listProductsName = getListWebElements(driver, SubCategoryPageUI.PRODUCTS_NAME);
 
         List<String> actualProductsNameDisplay = new ArrayList<String>();
@@ -51,7 +53,10 @@ public class SubCategoryPageObject extends MainCategoryPageObject{
 
     @Step("Verify product name sort by Ascending")
     public boolean isProductsNameSortByAscending() {
+        waitForListElementsVisible(driver, SubCategoryPageUI.PRODUCTS_NAME);
+
         List<WebElement> listProductsName = getListWebElements(driver, SubCategoryPageUI.PRODUCTS_NAME);
+        
         List<String> actualProductsNameDisplay = new ArrayList<String>();
         List<String> expectedProductNameDisplay = new ArrayList<String>();
 
@@ -68,7 +73,10 @@ public class SubCategoryPageObject extends MainCategoryPageObject{
 
     @Step("Verify product price sort by Low to High")
     public boolean isProductsPriceSortByLowToHigh() {
+        waitForListElementsVisible(driver, SubCategoryPageUI.PRODUCTS_PRICE);
+
         List<WebElement> listProductsPrice = getListWebElements(driver, SubCategoryPageUI.PRODUCTS_PRICE);
+
         List<Double> actualProductsPriceDisplay = new ArrayList<Double>();
         List<Double> expectedProductsPriceDisplay = new ArrayList<Double>();
 
@@ -84,7 +92,10 @@ public class SubCategoryPageObject extends MainCategoryPageObject{
 
     @Step("Verify product price sort by High to Low")
     public boolean isProductsNameSortByHighToLow() {
+        waitForListElementsVisible(driver, SubCategoryPageUI.PRODUCTS_PRICE);
+
         List<WebElement> listProductsPrice = getListWebElements(driver, SubCategoryPageUI.PRODUCTS_PRICE);
+
         List<Double> actualProductsPriceDisplay = new ArrayList<Double>();
         List<Double> expectedProductsPriceDisplay = new ArrayList<Double>();
 
@@ -108,6 +119,7 @@ public class SubCategoryPageObject extends MainCategoryPageObject{
     @Step("Verify number products display maximum or less than {0}")
     public boolean isProductsDisplayMaximumOrLess(int maximumOrLess) {
         waitForListElementsVisible(driver, SubCategoryPageUI.PRODUCTS_NAME);
+
         if (getListWebElements(driver, SubCategoryPageUI.PRODUCTS_NAME).size() <= maximumOrLess){
             return true;
         } else {
@@ -127,6 +139,8 @@ public class SubCategoryPageObject extends MainCategoryPageObject{
 
     @Step("Open first page")
     public void openFirstPage(){
+        waitForListElementsVisible(driver, SubCategoryPageUI.UNSELECTED_PAGES);
+
         List<WebElement>listUnselectedPages = getListWebElements(driver, SubCategoryPageUI.UNSELECTED_PAGES);
 
         int currentSelectedPage = Integer.valueOf(getWebElement(driver, SubCategoryPageUI.SELECTED_PAGE).getText());
@@ -149,6 +163,8 @@ public class SubCategoryPageObject extends MainCategoryPageObject{
 
     @Step("Open last page")
     public void openLastPage(){
+        waitForListElementsVisible(driver, SubCategoryPageUI.UNSELECTED_PAGES);
+
         List<WebElement>listUnselectedPages = getListWebElements(driver, SubCategoryPageUI.UNSELECTED_PAGES);
 
         int currentSelectedPage = Integer.valueOf(getWebElement(driver, SubCategoryPageUI.SELECTED_PAGE).getText());

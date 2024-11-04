@@ -8,4 +8,5 @@ public class ProductPageUI  {
     public static final String REVIEW_TEXT_TEXTAREA = "css=textarea#AddProductReview_ReviewText";
     public static final String PRODUCT_RATING_BY_NUMBER_RATING = "xpath=//div[@class='rating-options']/input[@value='%s']";
     public static final String SUBMIT_REVIEW_BUTTON = "css=button#add-review";
+    public static final String ADD_TO_WISHLIST_BUTTON = "xpath=//button[@id='add-to-wishlist-button-5']";
 }

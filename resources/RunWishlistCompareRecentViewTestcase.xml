@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<suite parallel = "false" name="Nopcommerce_User">
+<suite parallel = "false" name="Nopcommerce_User_Login">
 
     <listeners>
         <listener class-name="commons.MethodListener"/>
@@ -11,11 +11,12 @@
 
     <test name="Run on Firefox" preserve-order="true">
         <classes>
-            <class name="com.user.Register"/>
-            <class name="com.user.Login"/>
-            <class name="com.user.MyAccount"/>
-            <class name="com.user.Search"/>
-            <class name="com.user.SortDisplayPaging"/>
+            <class name="com.user.Register">
+                    <methods>
+                        <include name="Register_03_Register_With_Valid_Data"/>
+                    </methods>
+            </class>
+            <class name="com.user.WishlistCompareRecentView"/>
         </classes>
     </test>
 

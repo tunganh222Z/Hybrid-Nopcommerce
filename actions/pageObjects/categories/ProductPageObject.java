@@ -45,4 +45,9 @@ public class ProductPageObject extends BaseActions {
         waitForElementClickable(driver, ProductPageUI.SUBMIT_REVIEW_BUTTON);
         clickToElement(driver, ProductPageUI.SUBMIT_REVIEW_BUTTON);
     }
+
+    public void clickToAddToWishlistButton() {
+        waitForElementClickable(driver, ProductPageUI.ADD_TO_WISHLIST_BUTTON);
+        clickToElement(driver, ProductPageUI.ADD_TO_WISHLIST_BUTTON);
+    }
 }
