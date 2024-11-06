@@ -50,11 +50,11 @@ public class WishlistCompareRecentView extends BaseTest {
     public void beforeClass(String browserName, String url){
         driver = getBrowserDriver(browserName, url);
 
-        email = Register.email;
+        email = MyAccount.newEmail;
 
-        password = Register.password;
+        password = MyAccount.newPassword;
 
-        firstname = Register.firstName; lastname = Register.lastName;
+        firstname = MyAccount.firstname; lastname = MyAccount.lastname;
 
         module = "Computers"; subCategoryTitle = "Notebooks";
 

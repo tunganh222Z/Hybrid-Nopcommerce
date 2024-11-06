@@ -16,6 +16,7 @@
             <class name="com.user.MyAccount"/>
             <class name="com.user.Search"/>
             <class name="com.user.SortDisplayPaging"/>
+            <class name="com.user.WishlistCompareRecentView"/>
         </classes>
     </test>
 

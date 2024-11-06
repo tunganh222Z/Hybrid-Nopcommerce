@@ -38,8 +38,9 @@ public class MyAccount extends BaseTest {
     private SubCategoryPageObject subCategoryPage;
     private ProductPageObject productPage;
     private MyProductReviewsPageObject myProductReviewsPage;
-    private String email, password, firstname, lastname, companyName, newEmail, dateReviewed;
-    private String country, stateProvince, city, address1, address2, zipPostalCode, phoneNumber, faxNumber, newPassword;
+    private String email, password, companyName, dateReviewed;
+    private String country, stateProvince, city, address1, address2, zipPostalCode, phoneNumber, faxNumber;
+    public static String newPassword, newEmail, firstname, lastname;
     private String module, productName, reviewTitle, reviewTextContent, subCategoryTitle;
     private int numberRating;
     private FakerConfig fakerConfig;

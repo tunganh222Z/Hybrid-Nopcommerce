@@ -40,7 +40,7 @@ public class Search extends BaseTest {
         searchKeywords = "Apple MacBook Pro"; categoryExpected = "Computers"; manufacturerExpected = "Apple"; incorrectManufacturer = "HP";
         //
 
-        email = Register.email; password = Register.password;
+        email = MyAccount.newEmail; password = MyAccount.newPassword;
 
         homePage = PageGenerator.getHomePage(driver);
 
