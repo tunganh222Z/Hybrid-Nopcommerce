@@ -321,6 +321,29 @@ public class BasePage {
         return status;
     }
 
+    public boolean isELementUndisplayed(WebDriver driver, String locator, String... restParam){
+        boolean status;
+        // Trước khi tìm element thì set time ngắn thôi
+        setImplicitWait(driver, shortTimeOut);
+
+        List<WebElement> elements = getListWebElements(driver, getDynamicLocator(locator, restParam));
+
+        if (elements.size() >0){
+            if (elements.get(0).isDisplayed()){
+                status = false;
+            } else {
+                status = true;
+            }
+        } else {
+            status = true;
+        }
+
+        //Trả lại timeout mặc định cho các step còn lại, nếu không setLong là từ sau cứ short thôi
+        setImplicitWait(driver, longTimeOut);
+
+        return status;
+    }
+
 
 
     public boolean isElementDisplayed(WebDriver driver, String locator, String... restParams) {

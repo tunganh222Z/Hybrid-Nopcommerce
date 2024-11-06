@@ -19,6 +19,12 @@ import pageObjects.categories.MainCategoryPageObject;
 import pageObjects.categories.ProductPageObject;
 import pageObjects.categories.SubCategoryPageObject;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Stream;
+
 @Feature("Wishlist Compare Recent view")
 public class WishlistCompareRecentView extends BaseTest {
     WebDriver driver;
@@ -33,8 +39,11 @@ public class WishlistCompareRecentView extends BaseTest {
     private CompareProductsListPageObject compareProductsListPage;
 
     private String module, subCategoryTitle, productName, productName2, productPrice, productPrice2;
-
+    private String productName3, productName4, productName5;
     private String email, password, firstname, lastname;
+
+    private List<String> productList;
+    private List<String> expectedRecentlyViewed;
 
     @Parameters({"browser","url"})
     @BeforeClass
@@ -48,8 +57,21 @@ public class WishlistCompareRecentView extends BaseTest {
         firstname = Register.firstName; lastname = Register.lastName;
 
         module = "Computers"; subCategoryTitle = "Notebooks";
-        productName ="Apple MacBook Pro 13-inch"; productPrice = "$1,800.00";
-        productName2 = "Asus N551JK-XO076H Laptop"; productPrice2 = "$1,500.00";
+
+        productName ="Apple MacBook Pro 13-inch";
+        productName2 = "Asus N551JK-XO076H Laptop";
+        productName3 = "HP Envy 6-1180ca 15.6-Inch Sleekbook";
+        productName4 = "HP Spectre XT Pro UltraBook";
+        productName5="Lenovo Thinkpad X1 Carbon Laptop";
+
+        productPrice = "$1,800.00"; productPrice2 = "$1,500.00";
+
+        productList = new ArrayList<>(List.of(productName,productName2,productName3,productName4,productName5
+        ));
+
+        expectedRecentlyViewed = new ArrayList<>(productList.subList(productList.size()-3, productList.size()));
+
+        Collections.reverse(expectedRecentlyViewed);
 
         homePage = PageGenerator.getHomePage(driver);
 
@@ -80,11 +102,11 @@ public class WishlistCompareRecentView extends BaseTest {
 
         wishlistPage = productPage.clickToWishlistLink();
 
-        verifyEqual(productPage.getProductNameAddedToWishlistPage(),productName);
+        verifyEqual(wishlistPage.getProductNameAddedToWishlistPage(),productName);
 
         wishlistPage.clickToWishlistURLForSharingLink();
 
-        verifyEqual(wishlistPage.getWishlistTitleFromURLSharing(), "Wishlist of " + firstname + lastname);
+        verifyEqual(wishlistPage.getWishlistTitleFromURLSharing(), "Wishlist of " + firstname +" "+ lastname);
     }
 
     @Description("")
@@ -95,13 +117,13 @@ public class WishlistCompareRecentView extends BaseTest {
 
         shoppingCartPage = wishlistPage.clickToAddToCartButton();
 
-        verifyEqual(shoppingCartPage.getProductNameAddedToCart(), productName);
+        verifyEqual(shoppingCartPage.getAddedProductNameToCart(), productName);
 
         wishlistPage = shoppingCartPage.clickToWishlistLink();
 
-        verifyTrue(wishlistPage.isProductUnDisplayedInWishlistByName(productName));
+        verifyTrue(wishlistPage.isProductDisplayedInWishlistByName(productName));
     }
-    
+
     @Description("")
     @Story("")
     @Test
@@ -126,9 +148,11 @@ public class WishlistCompareRecentView extends BaseTest {
 
         wishlistPage.clickToRemoveByProductName(productName2);
 
+        wishlistPage.clickToRemoveByProductName(productName);
+
         verifyEqual(wishlistPage.getEmptyWishlistPageMessage(), "The wishlist is empty!");
 
-        wishlistPage.isProductUnDisplayedInWishlistByName(productName2);
+        verifyTrue(wishlistPage.isProductUnDisplayedInWishlistByName(productName2));
     }
 
     @Description("")
@@ -159,7 +183,7 @@ public class WishlistCompareRecentView extends BaseTest {
 
         compareProductsListPage = subCategoryPage.clickToCompareProductsListLink();
 
-        verifyTrue(compareProductsListPage.isAddedProductToCompareDisplay(productName) && compareProductsListPage.isAddedProductToCompareDisplay(productName2));
+        verifyTrue(compareProductsListPage.isAddedProductToCompareDisplayed(productName) && compareProductsListPage.isAddedProductToCompareDisplayed(productName2));
 
         verifyEqual(compareProductsListPage.getProductPriceByProductName(productName), productPrice);
 
@@ -169,14 +193,22 @@ public class WishlistCompareRecentView extends BaseTest {
 
         verifyEqual(compareProductsListPage.getEmptyCompareProductsMessage(), "You have no items to compare.");
 
-        verifyFalse(compareProductsListPage.isAddedProductToCompareDisplay(productName) && compareProductsListPage.isAddedProductToCompareDisplay(productName2));
+        verifyTrue(compareProductsListPage.isAddedProductToCompareUnDisplayed(productName) && compareProductsListPage.isAddedProductToCompareUnDisplayed(productName2));
     }
 
     @Description("")
     @Story("")
     @Test
     public void TC_05_Recently_View_Products_01_Recently_Viewed_Products(){
+        compareProductsListPage.openModuleInHeaderMenu(module);
 
+        mainCategoryPage = PageGenerator.getMainCategoryPage(driver);
+
+        subCategoryPage = mainCategoryPage.openSubCategoryByTitle(subCategoryTitle);
+
+        subCategoryPage.openProductByProductList(productList);
+
+        verifyEqual(subCategoryPage.getRecentlyViewedProducts(), expectedRecentlyViewed);
     }
 
 

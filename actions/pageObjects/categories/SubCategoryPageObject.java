@@ -189,4 +189,27 @@ public class SubCategoryPageObject extends MainCategoryPageObject{
     public boolean isPagingUnDisplay() {
         return isELementUndisplayed(driver, SubCategoryPageUI.PAGINATION_CONTROL);
     }
+
+    @Step("Click to add to compare button by Product name")
+    public void clickAddToCompareListByProductName(String productName) {
+        waitForElementClickable(driver, SubCategoryPageUI.ADD_TO_COMPARE_BUTTON,productName);
+        clickToElement(driver, SubCategoryPageUI.ADD_TO_COMPARE_BUTTON,productName);
+    }
+
+    public void openProductByProductList(List<String> productList) {
+        for (String product : productList){
+            openProductByName(product);
+            driver.navigate().back();
+        }
+    }
+
+    public List<String> getRecentlyViewedProducts() {
+        List<WebElement> listProductsName = getListWebElements(driver, SubCategoryPageUI.RECENTLY_VIEWED_PRODUCTS_NAME);
+        List<String> recentlyViewedProductList = new ArrayList<String>();
+
+        for (WebElement productName : listProductsName){
+            recentlyViewedProductList.add(productName.getText());
+        }
+        return recentlyViewedProductList;
+    }
 }

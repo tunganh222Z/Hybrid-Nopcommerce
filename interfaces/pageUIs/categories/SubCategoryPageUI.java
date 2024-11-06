@@ -14,4 +14,6 @@ public class SubCategoryPageUI  {
     public static final String UNSELECTED_PAGES = "xpath=//div[@class='pager']//li[@class='individual-page']/a";
     public static final String SELECTED_PAGE = "xpath=//div[@class='pager']//li[@class='current-page']/span";
     public static final String PAGINATION_CONTROL = "css=div.pager";
+    public static final String ADD_TO_COMPARE_BUTTON = "xpath=//h2[@class='product-title']/a[text()='%s']/ancestor::div[@class='product-item']//button[@class='button-2 add-to-compare-list-button']";
+    public static final String RECENTLY_VIEWED_PRODUCTS_NAME = "xpath=//div[contains(@class,'recently-viewed-products')]//ul/li/a[@class='product-name']";
 }

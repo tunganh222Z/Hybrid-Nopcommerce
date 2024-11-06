@@ -68,4 +68,8 @@ public class PageGenerator {
     public static CompareProductsListPageObject getCompareProductsList(WebDriver driver){
         return new CompareProductsListPageObject(driver);
     }
+
+    public static ShoppingCartPageObject getShoppingCartPage(WebDriver driver) {
+        return new ShoppingCartPageObject(driver);
+    }
 }

@@ -12,4 +12,6 @@ public class BaseActionsPageUI {
     public static final String SEARCH_TEXTBOX = "css=div.search-box>form>input";
     public static final String SEARCH_BUTTON = "css=div.search-box>form>button";
     public static final String AJAX_LOADING_ICON = "xpath=//div[@class='ajax-loading-block-window']";
+    public static final String COMPARE_PRODUCTS_LIST_LINK = "xpath=//div[@class='footer-block customer-service']//li/a[text()='Compare products list']";
+    public static final String WISHLIST_LINK = "xpath=//div[@class='header-links']//li/a/span[text()='Wishlist']";
 }

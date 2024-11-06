@@ -2,11 +2,9 @@ package commons;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
-import pageObjects.HomePageObject;
-import pageObjects.LoginPageObjects;
-import pageObjects.SearchPageObject;
+import pageObjects.*;
+import pageObjects.categories.CompareProductsListPageObject;
 import pageObjects.myAccount.CustomerInfoPageObject;
-import pageObjects.RegisterPageObject;
 import pageUIs.BaseActionsPageUI;
 import pageUIs.myAccount.CustomerInfoPageUI;
 
@@ -63,11 +61,6 @@ public class BaseActions extends BasePage{
         waitForElementInvisible(driver, BaseActionsPageUI.NOTFY_BAR);
     }
 
-    @Step("Wait Notify Bar invisible")
-    public void waitNotifyBarInvisible() {
-
-    }
-
     @Step("Verify Updated Successfully bar is displayed")
     public String getStatusNotifyBar() {
         waitForElementVisible(driver, CustomerInfoPageUI.STATUS_NOTIFY_BAR);
@@ -97,7 +90,22 @@ public class BaseActions extends BasePage{
         acceptToAlert(driver);
     }
 
+    @Step("Wait Ajax loading invisible")
     public void waitAjaxLoadingInvisible() {
         waitForElementInvisible(driver, BaseActionsPageUI.AJAX_LOADING_ICON);
+    }
+
+    @Step("Click to Compare Products list link")
+    public CompareProductsListPageObject clickToCompareProductsListLink() {
+        waitForElementClickable(driver, BaseActionsPageUI.COMPARE_PRODUCTS_LIST_LINK);
+        clickToElement(driver, BaseActionsPageUI.COMPARE_PRODUCTS_LIST_LINK);
+        return PageGenerator.getCompareProductsList(driver);
+    }
+
+    @Step("Click to Wishlist Link")
+    public WishlistPageObject clickToWishlistLink() {
+        waitForElementClickable(driver, BaseActionsPageUI.WISHLIST_LINK);
+        clickToElement(driver, BaseActionsPageUI.WISHLIST_LINK);
+        return PageGenerator.getWishlistPage(driver);
     }
 }

@@ -3,6 +3,7 @@ package pageObjects.categories;
 import commons.BaseActions;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
+import pageObjects.WishlistPageObject;
 import pageUIs.categories.ProductPageUI;
 
 public class ProductPageObject extends BaseActions {
@@ -46,6 +47,7 @@ public class ProductPageObject extends BaseActions {
         clickToElement(driver, ProductPageUI.SUBMIT_REVIEW_BUTTON);
     }
 
+    @Step("Click to Add to wishlist button")
     public void clickToAddToWishlistButton() {
         waitForElementClickable(driver, ProductPageUI.ADD_TO_WISHLIST_BUTTON);
         clickToElement(driver, ProductPageUI.ADD_TO_WISHLIST_BUTTON);
