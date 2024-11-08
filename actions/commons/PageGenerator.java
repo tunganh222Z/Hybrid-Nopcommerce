@@ -2,10 +2,8 @@ package commons;
 
 import org.openqa.selenium.WebDriver;
 import pageObjects.*;
-import pageObjects.categories.CompareProductsListPageObject;
-import pageObjects.categories.MainCategoryPageObject;
-import pageObjects.categories.ProductPageObject;
-import pageObjects.categories.SubCategoryPageObject;
+import pageObjects.orderCheckout.CheckoutPageObject;
+import pageObjects.categories.*;
 import pageObjects.myAccount.AddressesPageObject;
 import pageObjects.myAccount.ChangePasswordPageObject;
 import pageObjects.myAccount.CustomerInfoPageObject;
@@ -71,5 +69,9 @@ public class PageGenerator {
 
     public static ShoppingCartPageObject getShoppingCartPage(WebDriver driver) {
         return new ShoppingCartPageObject(driver);
+    }
+
+    public static CheckoutPageObject getCheckoutPage(WebDriver driver){
+        return new CheckoutPageObject(driver);
     }
 }

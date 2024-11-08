@@ -1,6 +1,7 @@
 package pageObjects.categories;
 
 import commons.BaseActions;
+import commons.ShoppingCartPageObject;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import pageObjects.WishlistPageObject;
@@ -51,5 +52,33 @@ public class ProductPageObject extends BaseActions {
     public void clickToAddToWishlistButton() {
         waitForElementClickable(driver, ProductPageUI.ADD_TO_WISHLIST_BUTTON);
         clickToElement(driver, ProductPageUI.ADD_TO_WISHLIST_BUTTON);
+    }
+
+    public void selectProcessorDropdown(String s) {
+    }
+
+    public void selectRAMDropdown(String s) {
+    }
+
+    public void selectHDDRadiobutton(String s) {
+    }
+
+    public void selectOSRadiobutton(String s) {
+    }
+
+    public void selectSoftwaresCheckbox(String s) {
+    }
+
+    public void clickToAddToCartButton() {
+    }
+
+    public ShoppingCartPageObject clickToShoppingCartLink() {
+    }
+
+    public void clickToUpdateButton() {
+    }
+
+    public void enterToQuantityTextbox(String s) {
+
     }
 }

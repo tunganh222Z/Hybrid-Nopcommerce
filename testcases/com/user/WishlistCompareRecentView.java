@@ -211,8 +211,6 @@ public class WishlistCompareRecentView extends BaseTest {
         verifyEqual(subCategoryPage.getRecentlyViewedProducts(), expectedRecentlyViewed);
     }
 
-
-
     @AfterClass
     public void afterClass(){
         closeBrowser();

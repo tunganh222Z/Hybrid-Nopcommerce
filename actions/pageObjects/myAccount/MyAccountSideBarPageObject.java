@@ -33,4 +33,8 @@ public class MyAccountSideBarPageObject extends BaseActions {
         clickToElement(driver, MyAccountSideBarPageUI.MY_PRODUCT_REVIEWS_LINK);
         return PageGenerator.getMyProductReviewsPage(driver);
     }
+
+    public OrderPageObject openOrdersPage() {
+        return null;
+    }
 }

@@ -196,6 +196,7 @@ public class SubCategoryPageObject extends MainCategoryPageObject{
         clickToElement(driver, SubCategoryPageUI.ADD_TO_COMPARE_BUTTON,productName);
     }
 
+    @Step("Open product by Products List")
     public void openProductByProductList(List<String> productList) {
         for (String product : productList){
             openProductByName(product);
@@ -203,6 +204,7 @@ public class SubCategoryPageObject extends MainCategoryPageObject{
         }
     }
 
+    @Step("Get recently viewed products name")
     public List<String> getRecentlyViewedProducts() {
         List<WebElement> listProductsName = getListWebElements(driver, SubCategoryPageUI.RECENTLY_VIEWED_PRODUCTS_NAME);
         List<String> recentlyViewedProductList = new ArrayList<String>();
