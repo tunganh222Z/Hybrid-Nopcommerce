@@ -354,6 +354,10 @@ public class BasePage {
         return getWebElement(driver, locator).isSelected();
     }
 
+    public boolean isElementSelected(WebDriver driver, String locator, String... restParam) {
+        return getWebElement(driver, getDynamicLocator(locator, restParam)).isSelected();
+    }
+
     public boolean isElementEnabled(WebDriver driver, String locator) {
         return getWebElement(driver, locator).isEnabled();
     }

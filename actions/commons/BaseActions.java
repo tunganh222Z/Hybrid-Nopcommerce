@@ -58,7 +58,7 @@ public class BaseActions extends BasePage{
     public void clickToCloseNotifyBar() {
         waitForElementClickable(driver, BaseActionsPageUI.NOTIFY_BAR_CLOSE_BUTTON);
         clickToElement(driver, BaseActionsPageUI.NOTIFY_BAR_CLOSE_BUTTON);
-        waitForElementInvisible(driver, BaseActionsPageUI.NOTFY_BAR);
+        waitForElementInvisible(driver, BaseActionsPageUI.NOTIFY_BAR);
     }
 
     @Step("Verify Updated Successfully bar is displayed")
@@ -107,5 +107,49 @@ public class BaseActions extends BasePage{
         waitForElementClickable(driver, BaseActionsPageUI.WISHLIST_LINK);
         clickToElement(driver, BaseActionsPageUI.WISHLIST_LINK);
         return PageGenerator.getWishlistPage(driver);
+    }
+
+    @Step("Open shopping cart page")
+    public ShoppingCartPageObject clickToShoppingCartLink() {
+        waitForElementClickable(driver, BaseActionsPageUI.SHOPPING_CART_LINK);
+        clickToElement(driver, BaseActionsPageUI.SHOPPING_CART_LINK);
+        return PageGenerator.getShoppingCartPage(driver);
+    }
+
+    @Step("Hover mouse to shopping cart popover")
+    public void hoverToShoppingCartIcon() {
+        waitForElementVisible(driver, BaseActionsPageUI.SHOPPING_CART_LINK);
+        scrollToElementOnTop(driver, BaseActionsPageUI.SHOPPING_CART_LINK);
+        hoverToElement(driver, BaseActionsPageUI.SHOPPING_CART_LINK);
+    }
+
+    @Step("Get product name in Shopping Cart Popover")
+    public String getProductNameInShoppingCartPopover() {
+        waitForElementVisible(driver, BaseActionsPageUI.PRODUCT_NAME_CART_POPOVER);
+        return getWebElementText(driver, BaseActionsPageUI.PRODUCT_NAME_CART_POPOVER);
+    }
+
+    @Step("Get product quantity in Shopping Cart Popover")
+    public String getProductQuantityInShoppingCartPopover() {
+        waitForElementVisible(driver, BaseActionsPageUI.PRODUCT_QUANTITY_CART_POPOVER);
+        return getWebElementText(driver, BaseActionsPageUI.PRODUCT_QUANTITY_CART_POPOVER);
+    }
+
+    @Step("Get product information in Shopping Cart Popover")
+    public String getProductInformationInShoppingCartPopover() {
+        waitForElementVisible(driver, BaseActionsPageUI.PRODUCT_INFORMATION_CART);
+        return getWebElementText(driver, BaseActionsPageUI.PRODUCT_INFORMATION_CART);
+    }
+
+    @Step("Get product price in Shopping Cart Popover")
+    public String getProductPriceInShoppingCartPopover() {
+        waitForElementVisible(driver, BaseActionsPageUI.PRODUCT_PRICE_CART_POPOVER);
+        return getWebElementText(driver, BaseActionsPageUI.PRODUCT_PRICE_CART_POPOVER);
+    }
+
+    @Step("Get sub-total in Shopping Cart Popover")
+    public String getSubTotalInShoppingCartPopover() {
+        waitForElementVisible(driver, BaseActionsPageUI.PRODUCT_SUB_TOTAL_CART_POPOVER);
+        return getWebElementText(driver, BaseActionsPageUI.PRODUCT_SUB_TOTAL_CART_POPOVER);
     }
 }
