@@ -35,6 +35,8 @@ public class MyAccountSideBarPageObject extends BaseActions {
     }
 
     public OrderPageObject openOrdersPage() {
-        return null;
+        waitForElementClickable(driver, MyAccountSideBarPageUI.ORDER_PAGE_LINK);
+        clickToElement(driver, MyAccountSideBarPageUI.ORDER_PAGE_LINK);
+        return PageGenerator.getOrderPage(driver);
     }
 }

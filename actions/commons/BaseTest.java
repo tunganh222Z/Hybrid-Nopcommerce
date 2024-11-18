@@ -122,7 +122,6 @@ public class BaseTest {
 //            log.info("------------Passed------------");
         } catch (Throwable e) { // Phải dùng Throwable thì sẽ không dùng lại, Exception sẽ dừng lại khi không thỏa mãn
             status = false;
-//            log.info("------------Fail------------");
             VerificationFailures.getFailures().addFailureForTest(Reporter.getCurrentTestResult(), e);
             Reporter.getCurrentTestResult().setThrowable(e);
         }

@@ -21,14 +21,29 @@ public class OrderPageObject extends MyAccountSideBarPageObject{
 
     @Step("Get order status in order page")
     public String getOrderStatusByOrderNumber(String orderNumber) {
-        waitForElementVisible(driver, OrderPageUI.ORDER_STATUS,orderNumber);
-        return getWebElementText(driver, OrderPageUI.ORDER_STATUS,orderNumber);
+        String toTitleCase = toTitleCase(orderNumber);
+        waitForElementVisible(driver, OrderPageUI.ORDER_STATUS,toTitleCase);
+        return getWebElementText(driver, OrderPageUI.ORDER_STATUS,toTitleCase);
     }
 
     @Step("Click to order detail")
     public OrderDetailPageObject clickToDetailsButtonByOrderNumber(String orderNumber) {
-        waitForElementClickable(driver, OrderPageUI.ORDER_DETAIL, orderNumber);
-        clickToElement(driver, OrderPageUI.ORDER_DETAIL, orderNumber);
+        String titleCase = toTitleCase(orderNumber);
+        waitForElementClickable(driver, OrderPageUI.ORDER_DETAIL, titleCase);
+        clickToElement(driver, OrderPageUI.ORDER_DETAIL, titleCase);
         return PageGenerator.getOrderDetailPage(driver);
+    }
+
+    public String toTitleCase(String strings){
+        String[] string = strings.split("\\s+");
+
+        StringBuilder titleCase = new StringBuilder();
+
+        for (String word : string){
+            titleCase.append(Character.toUpperCase(word.charAt(0)))
+                    .append(word.substring(1).toLowerCase())
+                    .append(" ");
+        }
+        return titleCase.toString().trim();
     }
 }

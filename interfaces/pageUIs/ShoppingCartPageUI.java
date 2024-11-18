@@ -16,7 +16,7 @@ public class ShoppingCartPageUI {
     public static final String DYNAMIC_SHIPPING_METHOD_RADIO_BUTTON = "xpath=//div[@class='shipping-options-body']/div/div[%s][text()='%s']";
     public static final String DYNAMIC_SHIPPINGMETHOD_COLUMN_BY_LABEL = "xpath=//div[@class='estimate-shipping-row']/div[text()='%s']/preceding-sibling::div";
     public static final String APPLY_BUTTON = "xpath=//div[@class='apply-shipping-button-container']";
-    public static final String SHIPPING_POPUP = "xpath=//div[@id='estimate-shipping-popup']";
-    public static final String AGREE_CHECKBOX = "//div[@class='terms-of-service']/input";
+    public static final String SHIPPING_POPUP = "xpath=//div[@class='mfp-container mfp-s-ready mfp-inline-holder']";
+    public static final String AGREE_CHECKBOX = "xpath=//div[@class='terms-of-service']/input";
     public static final String CHECKOUT_BUTTON = "xpath=//div[@class='checkout-buttons']/button";
 }

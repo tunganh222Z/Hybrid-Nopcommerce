@@ -2,12 +2,10 @@ package commons;
 
 import org.openqa.selenium.WebDriver;
 import pageObjects.*;
+import pageObjects.myAccount.*;
 import pageObjects.orderCheckout.CheckoutPageObject;
 import pageObjects.categories.*;
-import pageObjects.myAccount.AddressesPageObject;
-import pageObjects.myAccount.ChangePasswordPageObject;
-import pageObjects.myAccount.CustomerInfoPageObject;
-import pageObjects.myAccount.MyProductReviewsPageObject;
+import pageObjects.orderCheckout.OrderDetailPageObject;
 
 public class PageGenerator {
     WebDriver driver;
@@ -73,5 +71,13 @@ public class PageGenerator {
 
     public static CheckoutPageObject getCheckoutPage(WebDriver driver){
         return new CheckoutPageObject(driver);
+    }
+
+    public static OrderDetailPageObject getOrderDetailPage(WebDriver driver) {
+        return new OrderDetailPageObject(driver);
+    }
+
+    public static OrderPageObject getOrderPage(WebDriver driver) {
+        return new OrderPageObject(driver);
     }
 }

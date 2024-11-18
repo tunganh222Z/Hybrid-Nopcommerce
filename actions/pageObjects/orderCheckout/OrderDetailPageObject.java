@@ -1,7 +1,9 @@
 package pageObjects.orderCheckout;
 
 import commons.BaseActions;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
+import pageUIs.categories.OrderDetailPageUI;
 
 public class OrderDetailPageObject extends BaseActions {
     WebDriver driver;
@@ -11,91 +13,153 @@ public class OrderDetailPageObject extends BaseActions {
         this.driver = driver;
     }
 
-    public Object getOrderNumberInOrderOverview() {
+    @Step("Get order total in order overview")
+    public String getOrderTotalInOrderOverview() {
+        waitForElementVisible(driver, OrderDetailPageUI.ORDER_TOTAL_OVERVIEW);
+        return getWebElementText(driver, OrderDetailPageUI.ORDER_TOTAL_OVERVIEW);
     }
 
-    public Object getOrderPageStatusInOrderOverview() {
+    @Step("Get billing address first name & last name in Confirm order")
+    public String getBillingAddressFirstNameLastName() {
+        waitForElementVisible(driver, OrderDetailPageUI.CONFIRM_BILLING_FIRSTNAME_LASTNAME);
+        return getWebElementText(driver, OrderDetailPageUI.CONFIRM_BILLING_FIRSTNAME_LASTNAME);
     }
 
-    public Object getOrderTotalInOrderOverview() {
+    @Step("Get billing address email in Confirm order")
+    public String getBillingAddressEmail() {
+        waitForElementVisible(driver, OrderDetailPageUI.CONFIRM_BILLING_EMAIL);
+        return getWebElementText(driver, OrderDetailPageUI.CONFIRM_BILLING_EMAIL);
     }
 
-    public Object getBillingAddressFirstNameLastName() {
+    @Step("Get billing address phone number in Confirm order")
+    public String getBillingAddressPhone() {
+        waitForElementVisible(driver, OrderDetailPageUI.CONFIRM_BILLING_PHONE_NUMBER);
+        return getWebElementText(driver, OrderDetailPageUI.CONFIRM_BILLING_PHONE_NUMBER);
     }
 
-    public Object getBillingAddressEmail() {
+    @Step("Get billing address country in Confirm order")
+    public String getBillingAddressCountry() {
+        waitForElementVisible(driver, OrderDetailPageUI.CONFIRM_BILLING_COUNTRY);
+        return getWebElementText(driver, OrderDetailPageUI.CONFIRM_BILLING_COUNTRY);
     }
 
-    public Object getBillingAddressPhone() {
+    @Step("Get billing address country in Confirm order")
+    public String getBillingAddressProvinceState() {
+        waitForElementVisible(driver, OrderDetailPageUI.CONFIRM_BILLING_PROVINCE_STATE);
+        return getWebElementText(driver, OrderDetailPageUI.CONFIRM_BILLING_PROVINCE_STATE);
     }
 
-    public Object getBillingAddressCountry() {
+    @Step("Get billing address city in Confirm order")
+    public String getBillingAddressCity() {
+        waitForElementVisible(driver, OrderDetailPageUI.CONFIRM_BILLING_CITY);
+        return getWebElementText(driver, OrderDetailPageUI.CONFIRM_BILLING_CITY);
     }
 
-    public Object getBillingAddressProvinceState() {
+    @Step("Get billing address address1 in Confirm order")
+    public String getBillingAddressAddress1() {
+        waitForElementVisible(driver, OrderDetailPageUI.CONFIRM_BILLING_ADDRESS1);
+        return getWebElementText(driver, OrderDetailPageUI.CONFIRM_BILLING_ADDRESS1);
     }
 
-    public Object getBillingAddressCity() {
+    @Step("Get billing address zip code postal in Confirm order")
+    public String getBillingAddressZipCode() {
+        waitForElementVisible(driver, OrderDetailPageUI.CONFIRM_BILLING_ZIP_POSTAL_CODE);
+        return getWebElementText(driver, OrderDetailPageUI.CONFIRM_BILLING_ZIP_POSTAL_CODE);
     }
 
-    public Object getBillingAddressAddress1() {
+    @Step("Get billing address payment method in Confirm order")
+    public String getBillingAddressPaymentMethod() {
+        waitForElementVisible(driver, OrderDetailPageUI.CONFIRM_BILLING_PAYMENT_METHOD);
+        return getWebElementText(driver, OrderDetailPageUI.CONFIRM_BILLING_PAYMENT_METHOD);
     }
 
-    public Object getBillingAddressZipCode() {
+    @Step("Get shipping address first name & last name in Confirm order")
+    public String getShippingAddressFirstNameLastName() {
+        waitForElementVisible(driver, OrderDetailPageUI.CONFIRM_SHIPPING_FIRSTNAME_LASTNAME);
+        return getWebElementText(driver, OrderDetailPageUI.CONFIRM_SHIPPING_FIRSTNAME_LASTNAME);
     }
 
-    public Object getBillingAddressPaymentMethod() {
+    @Step("Get shipping address email in Confirm order")
+    public String getShippingAddressEmail() {
+        waitForElementVisible(driver, OrderDetailPageUI.CONFIRM_SHIPPING_EMAIL);
+        return getWebElementText(driver, OrderDetailPageUI.CONFIRM_SHIPPING_EMAIL);
     }
 
-    public Object getShippingAddressFirstNameLastName() {
+    @Step("Get shipping address phone number in Confirm order")
+    public String getShippingAddressPhone() {
+        waitForElementVisible(driver, OrderDetailPageUI.CONFIRM_SHIPPING_PHONE);
+        return getWebElementText(driver, OrderDetailPageUI.CONFIRM_SHIPPING_PHONE);
     }
 
-    public Object getShippingAddressEmail() {
+    @Step("Get shipping address country in Confirm order")
+    public String getShippingAddressCountry() {
+        waitForElementVisible(driver, OrderDetailPageUI.CONFIRM_SHIPPING_COUNTRY);
+        return getWebElementText(driver, OrderDetailPageUI.CONFIRM_SHIPPING_COUNTRY);
     }
 
-    public Object getShippingAddressPhone() {
+    @Step("Get shipping address province state in Confirm order")
+    public String getShippingAddressProvinceState() {
+        waitForElementVisible(driver, OrderDetailPageUI.CONFIRM_SHIPPING_PROVINCE_STATE);
+        return getWebElementText(driver, OrderDetailPageUI.CONFIRM_SHIPPING_PROVINCE_STATE);
     }
 
-    public Object getShippingAddressCountry() {
+    @Step("Get shipping address city in Confirm order")
+    public String getShippingAddressCity() {
+        waitForElementVisible(driver, OrderDetailPageUI.CONFIRM_SHIPPING_CITY);
+        return getWebElementText(driver, OrderDetailPageUI.CONFIRM_SHIPPING_CITY);
     }
 
-    public Object getShippingAddressProvinceState() {
+    @Step("Get shipping address address1 in Confirm order")
+    public String getShippingAddressAddress1() {
+        waitForElementVisible(driver, OrderDetailPageUI.CONFIRM_SHIPPING_ADDRESS1);
+        return getWebElementText(driver, OrderDetailPageUI.CONFIRM_SHIPPING_ADDRESS1);
     }
 
-    public Object getShippingAddressCity() {
+    @Step("Get shipping address zip postal code in Confirm order")
+    public String getShippingAddressZipCode() {
+        waitForElementVisible(driver, OrderDetailPageUI.CONFIRM_SHIPPING_ZIP_POSTAL_CODE);
+        return getWebElementText(driver, OrderDetailPageUI.CONFIRM_SHIPPING_ZIP_POSTAL_CODE);
     }
 
-    public Object getShippingAddressAddress1() {
+    @Step("Get shipping address shipping method in Confirm order")
+    public String getShippingAddressMethod() {
+        waitForElementVisible(driver, OrderDetailPageUI.CONFIRM_SHIPPING_METHOD);
+        return getWebElementText(driver, OrderDetailPageUI.CONFIRM_SHIPPING_METHOD);
     }
 
-    public Object getShippingAddressZipCode() {
+    @Step("Get product sku in cart table by Product name {0}")
+    public String getSKUProductByProductName(String productName) {
+        waitForElementVisible(driver, OrderDetailPageUI.PRODUCT_SKU_BY_PRODUCT_NAME,productName);
+        return getWebElementText(driver, OrderDetailPageUI.PRODUCT_SKU_BY_PRODUCT_NAME, productName);
     }
 
-    public Object getShippingAddress() {
+    @Step("Get product name in cart table")
+    public String getProductName() {
+        waitForElementVisible(driver, OrderDetailPageUI.PRODUCT_NAME_IN_CART_TABLE);
+        return getWebElementText(driver, OrderDetailPageUI.PRODUCT_NAME_IN_CART_TABLE);
     }
 
-    public Object getSKUProduct() {
+    @Step("Get product price in cart table by Product name {0}")
+    public String getProductPriceByProductName(String productName) {
+        waitForElementVisible(driver, OrderDetailPageUI.PRODUCT_PRICE_BY_PRODUCT_NAME,productName);
+        return getWebElementText(driver, OrderDetailPageUI.PRODUCT_PRICE_BY_PRODUCT_NAME, productName);
     }
 
-    public Object getProductName() {
+    @Step("Get product total price in cart table by Product name {0}")
+    public String getTotalProductPriceByProductName(String productName) {
+        waitForElementVisible(driver, OrderDetailPageUI.PRODUCT_TOTAL_PRICE_BY_PRODUCT_NAME,productName);
+        return getWebElementText(driver, OrderDetailPageUI.PRODUCT_TOTAL_PRICE_BY_PRODUCT_NAME, productName);
     }
 
-    public Object getProductPrice() {
+    @Step("Get sub total price in total info")
+    public String getSubTotalPrice() {
+        waitForElementVisible(driver, OrderDetailPageUI.SUB_TOTAL_PRICE_IN_TOTAL_INFO);
+        return getWebElementText(driver, OrderDetailPageUI.SUB_TOTAL_PRICE_IN_TOTAL_INFO);
     }
 
-    public Object getTotalProductPrice() {
-    }
-
-    public Object getSubTotalPrice() {
-    }
-
-    public Object getShippingGroundFee() {
-    }
-
-    public Object getTaxFee() {
-    }
-
-    public Object getTotalPrice() {
-        return null;
+    @Step("Get total price in total info")
+    public String getTotalPrice() {
+        waitForElementVisible(driver, OrderDetailPageUI.TOTAL_PRICE_IN_TOTAL_INFO);
+        return getWebElementText(driver, OrderDetailPageUI.TOTAL_PRICE_IN_TOTAL_INFO);
     }
 }

@@ -73,11 +73,7 @@ public class CheckoutPageObject extends BaseActions {
         sendkeyToElement(driver, CheckoutPageUI.BILLING_PHONE_NUMBER_TEXTBOX, phoneNumber);
     }
 
-    @Step("Click to continue button")
-    public void clickToContinueButton() {
-        waitForElementClickable(driver, CheckoutPageUI.CONTINUE_BUTTON);
-        clickToElement(driver, CheckoutPageUI.CONTINUE_BUTTON);
-    }
+
 
     @Step("Wait loading next step invisible")
     public void isLoadingNextStepInvisible() {
@@ -144,7 +140,7 @@ public class CheckoutPageObject extends BaseActions {
     }
 
     @Step("Click to shipping method radio button {0}")
-    public void clickToGroundRadioButton(String shippingMethod) {
+    public void clickToGroundRadioButtonByShippingMethod(String shippingMethod) {
         waitForElementClickable(driver, CheckoutPageUI.SHIPPING_METHOD_RADIOBUTTON, shippingMethod);
         clickToElement(driver, CheckoutPageUI.SHIPPING_METHOD_RADIOBUTTON,shippingMethod);
     }
@@ -264,25 +260,25 @@ public class CheckoutPageObject extends BaseActions {
     }
 
     @Step("Get product sku in cart table by Product name {0}")
-    public String getSKUProduct(String productName) {
+    public String getSKUProductByProductName(String productName) {
         waitForElementVisible(driver, CheckoutPageUI.PRODUCT_SKU_BY_PRODUCT_NAME,productName);
         return getWebElementText(driver, CheckoutPageUI.PRODUCT_SKU_BY_PRODUCT_NAME, productName);
     }
 
     @Step("Get product name in cart table")
-    public String getProductName(String productName) {
-        waitForElementVisible(driver, CheckoutPageUI.PRODUCT_NAME_IN_CART_TABLE,productName);
-        return getWebElementText(driver, CheckoutPageUI.PRODUCT_NAME_IN_CART_TABLE, productName);
+    public String getProductName() {
+        waitForElementVisible(driver, CheckoutPageUI.PRODUCT_NAME_IN_CART_TABLE);
+        return getWebElementText(driver, CheckoutPageUI.PRODUCT_NAME_IN_CART_TABLE);
     }
 
     @Step("Get product price in cart table by Product name {0}")
-    public String getProductPrice(String productName) {
+    public String getProductPriceByProductName(String productName) {
         waitForElementVisible(driver, CheckoutPageUI.PRODUCT_PRICE_BY_PRODUCT_NAME,productName);
         return getWebElementText(driver, CheckoutPageUI.PRODUCT_PRICE_BY_PRODUCT_NAME, productName);
     }
 
     @Step("Get product total price in cart table by Product name {0}")
-    public String getTotalProductPrice(String productName) {
+    public String getTotalProductPriceByProductName(String productName) {
         waitForElementVisible(driver, CheckoutPageUI.PRODUCT_TOTAL_PRICE_BY_PRODUCT_NAME,productName);
         return getWebElementText(driver, CheckoutPageUI.PRODUCT_TOTAL_PRICE_BY_PRODUCT_NAME, productName);
     }
@@ -321,5 +317,35 @@ public class CheckoutPageObject extends BaseActions {
     public String getOrderNumber() {
         waitForElementVisible(driver, CheckoutPageUI.ORDER_NUMBER);
         return getWebElementText(driver, CheckoutPageUI.ORDER_NUMBER);
+    }
+
+    @Step("Click to continue button IN SHIPPING ADDRESS")
+    public void clickToContinueShippingAddressButton() {
+        waitForElementClickable(driver, CheckoutPageUI.CONTINUE_BUTTON_SHIPPING_ADDRESS);
+        clickToElement(driver, CheckoutPageUI.CONTINUE_BUTTON_SHIPPING_ADDRESS);
+    }
+
+    @Step("Click to continue button IN BILLING ADDRESS")
+    public void clickToContinueBillingAddressButton() {
+        waitForElementClickable(driver, CheckoutPageUI.CONTINUE_BUTTON_BILLING_ADDRESS);
+        clickToElement(driver, CheckoutPageUI.CONTINUE_BUTTON_BILLING_ADDRESS);
+    }
+
+    @Step("Click to continue button IN BILLING ADDRESS")
+    public void clickToContinueShippingMethodButton() {
+        waitForElementClickable(driver, CheckoutPageUI.CONTINUE_BUTTON_SHIPPING_METHOD);
+        clickToElement(driver, CheckoutPageUI.CONTINUE_BUTTON_SHIPPING_METHOD);
+    }
+
+    @Step("Click to continue button IN BILLING ADDRESS")
+    public void clickToContinuePaymentMethodButton() {
+        waitForElementClickable(driver, CheckoutPageUI.CONTINUE_BUTTON_PAYMENT_METHOD);
+        clickToElement(driver, CheckoutPageUI.CONTINUE_BUTTON_PAYMENT_METHOD);
+    }
+
+    @Step("Click to continue button IN BILLING ADDRESS")
+    public void clickToContinuePaymentInformationButton() {
+        waitForElementClickable(driver, CheckoutPageUI.CONTINUE_BUTTON_PAYMENT_INFORMATION);
+        clickToElement(driver, CheckoutPageUI.CONTINUE_BUTTON_PAYMENT_INFORMATION);
     }
 }

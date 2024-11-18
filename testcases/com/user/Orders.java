@@ -46,8 +46,9 @@ public class Orders extends BaseTest {
     private String firstName, lastName, country, stateProvince,city, address1, zipPostalCode, phoneNumber;
     private String moduleTitle;
     private String processor, ram, hdd, os, orderNumber;
-    private String productPrice, productSKU, orderStatus, shippingMethod, paymentMethod, subTotal, totalPrice, giftWrapping;
+    private String productPrice, productSKU, orderStatus, paymentMethod, subTotal, totalPrice, giftWrapping;
 
+    private List<String> shippingMethod;
     private List<String> softwareList;
     private List<OrdersData> ordersData;
     private List<String> subCategory;
@@ -76,7 +77,10 @@ public class Orders extends BaseTest {
 
         moduleTitle = "Computers";
 
-        shippingMethod = "Ground";
+        shippingMethod = new ArrayList<>(List.of(
+                "Ground",
+                "Ground ($0.00)"
+        ));
 
         paymentMethod = "Check / Money Order";
 
@@ -295,7 +299,9 @@ public class Orders extends BaseTest {
 
     @Description("")
     @Story("")
+    @Test
     public void Order_05_(){
+
         shoppingCartPage.openModuleInHeaderMenu(moduleTitle);
 
         mainCategoryPage = PageGenerator.getMainCategoryPage(driver);
@@ -336,7 +342,7 @@ public class Orders extends BaseTest {
 
         shoppingCartPage.enterZipPostalCodeInShipToTextbox(zipPostalCode);
 
-        shoppingCartPage.clickToShippingMethodRadioButton(shippingMethod);
+        shoppingCartPage.clickToShippingMethodRadioButton(shippingMethod.get(0));
 
         totalPrice = shoppingCartPage.getTotalPriceInTotalInfo();
 
@@ -368,7 +374,7 @@ public class Orders extends BaseTest {
 
         checkoutPage.enterToBillingPhoneNumberTextbox(phoneNumber);
 
-        checkoutPage.clickToContinue();
+        checkoutPage.clickToContinueBillingAddressButton();
 
         checkoutPage.isLoadingNextStepInvisible();
 
@@ -392,45 +398,31 @@ public class Orders extends BaseTest {
 
         checkoutPage.enterToShippingPhoneNumberTextbox(phoneNumber);
 
-        checkoutPage.clickToContinue();
+        checkoutPage.clickToContinueShippingAddressButton();
 
         checkoutPage.isLoadingNextStepInvisible();
 
-        checkoutPage.clickToGroundRadioButton();
+        checkoutPage.clickToGroundRadioButtonByShippingMethod(shippingMethod.get(1));
 
-        checkoutPage.clickToContinue();
-
-        checkoutPage.isLoadingNextStepInvisible();
-
-        checkoutPage.clickToCheckMoneyOrderRadioButton();
-
-        checkoutPage.clickToContinue();
+        checkoutPage.clickToContinueShippingMethodButton();
 
         checkoutPage.isLoadingNextStepInvisible();
 
-        verifyEqual(checkoutPage.getHeadingPaymentInformation(),"Mail Personal or Business Check, Cashier's Check or money order to:");
+        checkoutPage.clickToPaymentMethodRadioButton(paymentMethod);
 
-        verifyEqual(checkoutPage.getStoreAddressPaymentInformation(),
-                "NOP SOLUTIONS\n" +
-                "your address here,\n" +
-                "New York, NY 10001\n" +
-                "USA");
+        checkoutPage.clickToContinuePaymentMethodButton();
 
-        verifyEqual(checkoutPage.getMessagePaymentInformation(),
-                "Notice that if you pay by Personal or Business Check, " +
-                "your order may be held for up to 10 days after we receive your check to allow enough time for the check to clear. " +
-                "If you want us to ship faster upon receipt of your payment, " +
-                "then we recommend your send a money order or Cashier's check.");
+        checkoutPage.isLoadingNextStepInvisible();
 
-        checkoutPage.clickToContinue();
+        checkoutPage.clickToContinuePaymentInformationButton();
 
         checkoutPage.isLoadingNextStepInvisible();
 
         verifyEqual(checkoutPage.getBillingAddressFirstNameLastName(),firstName+" "+lastName);
 
-        verifyEqual(checkoutPage.getBillingAddressEmail(),email);
+        verifyEqual(checkoutPage.getBillingAddressEmail(),"Email: " + email);
 
-        verifyEqual(checkoutPage.getBillingAddressPhone(),phoneNumber);
+        verifyEqual(checkoutPage.getBillingAddressPhone(),"Phone: " + phoneNumber);
 
         verifyEqual(checkoutPage.getBillingAddressCountry(),country);
 
@@ -446,9 +438,9 @@ public class Orders extends BaseTest {
 
         verifyEqual(checkoutPage.getShippingAddressFirstNameLastName(),firstName+" "+lastName);
 
-        verifyEqual(checkoutPage.getShippingAddressEmail(),email);
+        verifyEqual(checkoutPage.getShippingAddressEmail(),"Email: " + email);
 
-        verifyEqual(checkoutPage.getShippingAddressPhone(),phoneNumber);
+        verifyEqual(checkoutPage.getShippingAddressPhone(),"Phone: " + phoneNumber);
 
         verifyEqual(checkoutPage.getShippingAddressCountry(),country);
 
@@ -460,49 +452,43 @@ public class Orders extends BaseTest {
 
         verifyEqual(checkoutPage.getShippingAddressZipCode(),zipPostalCode);
 
-        verifyEqual(checkoutPage.getShippingAddressMethod(), shippingMethod);
+        verifyEqual(checkoutPage.getShippingAddressMethod(), shippingMethod.get(0));
 
-        productSKU = checkoutPage.getSKUProduct();
+        productSKU = checkoutPage.getSKUProductByProductName(productName.get(2));
 
         verifyEqual(checkoutPage.getProductName(), productName.get(2));
 
-        verifyEqual(checkoutPage.getProductPrice(), productPrice);
+        verifyEqual(checkoutPage.getProductPriceByProductName(productName.get(2)), productPrice);
 
-        verifyEqual(checkoutPage.getTotalProductPrice(), totalPrice);
+        verifyEqual(checkoutPage.getTotalProductPriceByProductName(productName.get(2)), totalPrice);
 
         verifyEqual(checkoutPage.getSubTotalPrice(), subTotal);
 
         verifyEqual(checkoutPage.getTotalPrice(), totalPrice);
 
-        checkoutPage.clickToContinueButton();
+        checkoutPage.clickToConfirmButton();
 
         verifyEqual(checkoutPage.getThankYouTitle(),"Thank you");
 
-        verifyEqual(checkoutPage.getOrderSuccessfullyMessage(), "");
+        verifyEqual(checkoutPage.getOrderSuccessfullyMessage(), "Your order has been successfully processed!");
 
-        checkoutPage.getOrderNumber();
+        orderNumber = checkoutPage.getOrderNumber();
 
         customerInfoPage = checkoutPage.clickToMyAccountLink();
 
         orderPage = customerInfoPage.openOrdersPage();
 
-        orderNumber = orderPage.getOrderNumber();
+        orderStatus = orderPage.getOrderStatusByOrderNumber(orderNumber);
 
-        orderStatus = orderPage.getOrderStatus();
-
-        orderDetailPage = orderPage.clickToDeatailsButton();
-
-        verifyEqual(orderDetailPage.getOrderNumberInOrderOverview(),orderNumber);
-
-        verifyEqual(orderDetailPage.getOrderPageStatusInOrderOverview(), orderStatus);
+        orderDetailPage = orderPage.clickToDetailsButtonByOrderNumber(orderNumber);
 
         verifyEqual(orderDetailPage.getOrderTotalInOrderOverview(), totalPrice);
 
         verifyEqual(orderDetailPage.getBillingAddressFirstNameLastName(),firstName+" "+lastName);
 
-        verifyEqual(orderDetailPage.getBillingAddressEmail(),email);
+        verifyEqual(orderDetailPage.getBillingAddressEmail(),"Email: " + email);
 
-        verifyEqual(orderDetailPage.getBillingAddressPhone(),phoneNumber);
+        verifyEqual(orderDetailPage.getBillingAddressPhone(),"Phone: " + phoneNumber);
 
         verifyEqual(orderDetailPage.getBillingAddressCountry(),country);
 
@@ -518,9 +504,9 @@ public class Orders extends BaseTest {
 
         verifyEqual(orderDetailPage.getShippingAddressFirstNameLastName(),firstName+" "+lastName);
 
-        verifyEqual(orderDetailPage.getShippingAddressEmail(),email);
+        verifyEqual(orderDetailPage.getShippingAddressEmail(),"Email: " + email);
 
-        verifyEqual(orderDetailPage.getShippingAddressPhone(),phoneNumber);
+        verifyEqual(orderDetailPage.getShippingAddressPhone(),"Phone: " + phoneNumber);
 
         verifyEqual(orderDetailPage.getShippingAddressCountry(),country);
 
@@ -532,15 +518,15 @@ public class Orders extends BaseTest {
 
         verifyEqual(orderDetailPage.getShippingAddressZipCode(),zipPostalCode);
 
-        verifyEqual(orderDetailPage.getShippingAddressMethod(), shippingMethod);
+        verifyEqual(orderDetailPage.getShippingAddressMethod(), shippingMethod.get(0));
 
-        verifyEqual(orderDetailPage.getSKUProduct(), productSKU);
+        verifyEqual(orderDetailPage.getSKUProductByProductName(productName.get(2)), productSKU);
 
         verifyEqual(orderDetailPage.getProductName(), productName.get(2));
 
-        verifyEqual(orderDetailPage.getProductPrice(), productPrice);
+        verifyEqual(orderDetailPage.getProductPriceByProductName(productName.get(2)), productPrice);
 
-        verifyEqual(orderDetailPage.getTotalProductPrice(), totalPrice);
+        verifyEqual(orderDetailPage.getTotalProductPriceByProductName(productName.get(2)), totalPrice);
 
         verifyEqual(orderDetailPage.getSubTotalPrice(), subTotal);
 
