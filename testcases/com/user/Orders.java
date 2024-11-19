@@ -79,7 +79,9 @@ public class Orders extends BaseTest {
 
         shippingMethod = new ArrayList<>(List.of(
                 "Ground",
-                "Ground ($0.00)"
+                "Ground ($0.00)",
+                "Next Day Air ($0.00)",
+                "Next Day Air"
         ));
 
         paymentMethod = "Check / Money Order";
@@ -402,7 +404,7 @@ public class Orders extends BaseTest {
 
         checkoutPage.isLoadingNextStepInvisible();
 
-        checkoutPage.clickToGroundRadioButtonByShippingMethod(shippingMethod.get(1));
+        checkoutPage.clickToRadioButtonByShippingMethod(shippingMethod.get(1));
 
         checkoutPage.clickToContinueShippingMethodButton();
 
@@ -531,19 +533,208 @@ public class Orders extends BaseTest {
         verifyEqual(orderDetailPage.getSubTotalPrice(), subTotal);
 
         verifyEqual(orderDetailPage.getTotalPrice(), totalPrice);
+
+        customerInfoPage = orderDetailPage.clickToMyAccountLink();
+
+        orderPage = customerInfoPage.openOrdersPage();
     }
+
 
     @Description("")
     @Story("")
     @Test
-    public void Order_06_(){
+    public void Order_07_Reorder(){
+        orderDetailPage = orderPage.clickToDetailsButtonByOrderNumber(orderNumber);
 
-    }
+        shoppingCartPage = orderDetailPage.clickToReOrder();
 
-    @Description("")
-    @Story("")
-    @Test
-    public void Order_07_(){
+        shoppingCartPage.enterToQuantityTextbox("");
+
+        totalPrice = shoppingCartPage.getTotalPriceInTotalInfo();
+
+        shoppingCartPage.clickToAgreeCheckbox();
+
+        checkoutPage = shoppingCartPage.clickToCheckoutButton();
+
+        checkoutPage.clickToUncheckShipToSameAddressCheckbox();
+
+        checkoutPage.selectBillingAddressInDropdown("New Address");
+
+        checkoutPage.enterToBillingFirstnameTextbox(firstName);
+
+        checkoutPage.enterToBillingLastnameTextbox(lastName);
+
+        checkoutPage.enterToBillingEmailTextbox(email);
+
+        checkoutPage.selectBillingCountryDropdown(country);
+
+        checkoutPage.selectBillingStateProvinceDropdown(stateProvince);
+
+        checkoutPage.enterToBillingCityTextbox(city);
+
+        checkoutPage.enterToBillingAddress1Textbox(address1);
+
+        checkoutPage.enterToBillingZipPostalCodeTextbox(zipPostalCode);
+
+        checkoutPage.enterToBillingPhoneNumberTextbox(phoneNumber);
+
+        checkoutPage.clickToContinueBillingAddressButton();
+
+        checkoutPage.isLoadingNextStepInvisible();
+
+        checkoutPage.selectAddressDropdown("New Address");
+
+        checkoutPage.enterToShippingFirstNameTextbox(firstName);
+
+        checkoutPage.enterToShippingLastNameTextbox(lastName);
+
+        checkoutPage.enterToShippingEmailTextbox(email);
+
+        checkoutPage.selectShippingCountryDropdown(country);
+
+        checkoutPage.selectShippingStateProvinceDropdown(stateProvince);
+
+        checkoutPage.enterToShippingCityTextbox(city);
+
+        checkoutPage.enterToShippingAddress1Textbox(address1);
+
+        checkoutPage.enterToShippingZipPostalCodeTextbox(zipPostalCode);
+
+        checkoutPage.enterToShippingPhoneNumberTextbox(phoneNumber);
+
+        checkoutPage.clickToContinueShippingAddressButton();
+
+        checkoutPage.isLoadingNextStepInvisible();
+
+        checkoutPage.clickToRadioButtonByShippingMethod(shippingMethod.get(2));
+
+        checkoutPage.clickToContinueShippingMethodButton();
+
+        checkoutPage.isLoadingNextStepInvisible();
+
+        checkoutPage.clickToPaymentMethodRadioButton(paymentMethod);
+
+        checkoutPage.clickToContinuePaymentMethodButton();
+
+        checkoutPage.isLoadingNextStepInvisible();
+
+        checkoutPage.clickToContinuePaymentInformationButton();
+
+        checkoutPage.isLoadingNextStepInvisible();
+
+        verifyEqual(checkoutPage.getBillingAddressFirstNameLastName(),firstName+" "+lastName);
+
+        verifyEqual(checkoutPage.getBillingAddressEmail(),"Email: " + email);
+
+        verifyEqual(checkoutPage.getBillingAddressPhone(),"Phone: " + phoneNumber);
+
+        verifyEqual(checkoutPage.getBillingAddressCountry(),country);
+
+        verifyEqual(checkoutPage.getBillingAddressProvinceState(),stateProvince);
+
+        verifyEqual(checkoutPage.getBillingAddressCity(),city);
+
+        verifyEqual(checkoutPage.getBillingAddressAddress1(),address1);
+
+        verifyEqual(checkoutPage.getBillingAddressZipCode(),zipPostalCode);
+
+        verifyEqual(checkoutPage.getBillingAddressPaymentMethod(), paymentMethod);
+
+        verifyEqual(checkoutPage.getShippingAddressFirstNameLastName(),firstName+" "+lastName);
+
+        verifyEqual(checkoutPage.getShippingAddressEmail(),"Email: " + email);
+
+        verifyEqual(checkoutPage.getShippingAddressPhone(),"Phone: " + phoneNumber);
+
+        verifyEqual(checkoutPage.getShippingAddressCountry(),country);
+
+        verifyEqual(checkoutPage.getShippingAddressProvinceState(),stateProvince);
+
+        verifyEqual(checkoutPage.getShippingAddressCity(),city);
+
+        verifyEqual(checkoutPage.getShippingAddressAddress1(),address1);
+
+        verifyEqual(checkoutPage.getShippingAddressZipCode(),zipPostalCode);
+
+        verifyEqual(checkoutPage.getShippingAddressMethod(), shippingMethod.get(3));
+
+        productSKU = checkoutPage.getSKUProductByProductName(productName.get(2));
+
+        verifyEqual(checkoutPage.getProductName(), productName.get(2));
+
+        verifyEqual(checkoutPage.getProductPriceByProductName(productName.get(2)), productPrice);
+
+        verifyEqual(checkoutPage.getTotalProductPriceByProductName(productName.get(2)), totalPrice);
+
+        verifyEqual(checkoutPage.getSubTotalPrice(), subTotal);
+
+        verifyEqual(checkoutPage.getTotalPrice(), totalPrice);
+
+        checkoutPage.clickToConfirmButton();
+
+        verifyEqual(checkoutPage.getThankYouTitle(),"Thank you");
+
+        verifyEqual(checkoutPage.getOrderSuccessfullyMessage(), "Your order has been successfully processed!");
+
+        orderNumber = checkoutPage.getOrderNumber();
+
+        customerInfoPage = checkoutPage.clickToMyAccountLink();
+
+        orderPage = customerInfoPage.openOrdersPage();
+
+        orderStatus = orderPage.getOrderStatusByOrderNumber(orderNumber);
+
+        orderDetailPage = orderPage.clickToDetailsButtonByOrderNumber(orderNumber);
+
+        verifyEqual(orderDetailPage.getOrderTotalInOrderOverview(), totalPrice);
+
+        verifyEqual(orderDetailPage.getBillingAddressFirstNameLastName(),firstName+" "+lastName);
+
+        verifyEqual(orderDetailPage.getBillingAddressEmail(),"Email: " + email);
+
+        verifyEqual(orderDetailPage.getBillingAddressPhone(),"Phone: " + phoneNumber);
+
+        verifyEqual(orderDetailPage.getBillingAddressCountry(),country);
+
+        verifyEqual(orderDetailPage.getBillingAddressProvinceState(),stateProvince);
+
+        verifyEqual(orderDetailPage.getBillingAddressCity(),city);
+
+        verifyEqual(orderDetailPage.getBillingAddressAddress1(),address1);
+
+        verifyEqual(orderDetailPage.getBillingAddressZipCode(),zipPostalCode);
+
+        verifyEqual(orderDetailPage.getBillingAddressPaymentMethod(), paymentMethod);
+
+        verifyEqual(orderDetailPage.getShippingAddressFirstNameLastName(),firstName+" "+lastName);
+
+        verifyEqual(orderDetailPage.getShippingAddressEmail(),"Email: " + email);
+
+        verifyEqual(orderDetailPage.getShippingAddressPhone(),"Phone: " + phoneNumber);
+
+        verifyEqual(orderDetailPage.getShippingAddressCountry(),country);
+
+        verifyEqual(orderDetailPage.getShippingAddressProvinceState(),stateProvince);
+
+        verifyEqual(orderDetailPage.getShippingAddressCity(),city);
+
+        verifyEqual(orderDetailPage.getShippingAddressAddress1(),address1);
+
+        verifyEqual(orderDetailPage.getShippingAddressZipCode(),zipPostalCode);
+
+        verifyEqual(orderDetailPage.getShippingAddressMethod(), shippingMethod.get(3));
+
+        verifyEqual(orderDetailPage.getSKUProductByProductName(productName.get(2)), productSKU);
+
+        verifyEqual(orderDetailPage.getProductName(), productName.get(2));
+
+        verifyEqual(orderDetailPage.getProductPriceByProductName(productName.get(2)), productPrice);
+
+        verifyEqual(orderDetailPage.getTotalProductPriceByProductName(productName.get(2)), totalPrice);
+
+        verifyEqual(orderDetailPage.getSubTotalPrice(), subTotal);
+
+        verifyEqual(orderDetailPage.getTotalPrice(), totalPrice);
 
     }
 

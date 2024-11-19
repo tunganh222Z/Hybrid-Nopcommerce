@@ -19,4 +19,5 @@ public class ShoppingCartPageUI {
     public static final String SHIPPING_POPUP = "xpath=//div[@class='mfp-container mfp-s-ready mfp-inline-holder']";
     public static final String AGREE_CHECKBOX = "xpath=//div[@class='terms-of-service']/input";
     public static final String CHECKOUT_BUTTON = "xpath=//div[@class='checkout-buttons']/button";
+    public static final String QUANTITY_TEXTBOX = "xpath=//td[@class='quantity']//input";
 }

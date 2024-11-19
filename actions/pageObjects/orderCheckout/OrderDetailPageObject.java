@@ -1,6 +1,8 @@
 package pageObjects.orderCheckout;
 
 import commons.BaseActions;
+import commons.PageGenerator;
+import commons.ShoppingCartPageObject;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import pageUIs.categories.OrderDetailPageUI;
@@ -161,5 +163,12 @@ public class OrderDetailPageObject extends BaseActions {
     public String getTotalPrice() {
         waitForElementVisible(driver, OrderDetailPageUI.TOTAL_PRICE_IN_TOTAL_INFO);
         return getWebElementText(driver, OrderDetailPageUI.TOTAL_PRICE_IN_TOTAL_INFO);
+    }
+
+    @Step("Click to reOrder button")
+    public ShoppingCartPageObject clickToReOrder() {
+        waitForElementClickable(driver, OrderDetailPageUI.REORDER_BUTTON);
+        clickToElement(driver, OrderDetailPageUI.REORDER_BUTTON);
+        return PageGenerator.getShoppingCartPage(driver);
     }
 }

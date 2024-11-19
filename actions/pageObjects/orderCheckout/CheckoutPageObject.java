@@ -140,7 +140,7 @@ public class CheckoutPageObject extends BaseActions {
     }
 
     @Step("Click to shipping method radio button {0}")
-    public void clickToGroundRadioButtonByShippingMethod(String shippingMethod) {
+    public void clickToRadioButtonByShippingMethod(String shippingMethod) {
         waitForElementClickable(driver, CheckoutPageUI.SHIPPING_METHOD_RADIOBUTTON, shippingMethod);
         clickToElement(driver, CheckoutPageUI.SHIPPING_METHOD_RADIOBUTTON,shippingMethod);
     }
@@ -347,5 +347,11 @@ public class CheckoutPageObject extends BaseActions {
     public void clickToContinuePaymentInformationButton() {
         waitForElementClickable(driver, CheckoutPageUI.CONTINUE_BUTTON_PAYMENT_INFORMATION);
         clickToElement(driver, CheckoutPageUI.CONTINUE_BUTTON_PAYMENT_INFORMATION);
+    }
+
+    @Step("Select billing address dropdown {0}")
+    public void selectBillingAddressInDropdown(String expectedOption) {
+        waitForElementClickable(driver, CheckoutPageUI.BILLING_ADDRESS_DROPDOWN);
+        selectItemInDefaultDropdown(driver, CheckoutPageUI.BILLING_ADDRESS_DROPDOWN, expectedOption);
     }
 }

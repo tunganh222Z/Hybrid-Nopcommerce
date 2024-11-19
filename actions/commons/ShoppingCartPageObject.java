@@ -126,4 +126,10 @@ public class ShoppingCartPageObject extends  BaseActions{
     public void waitShippingPopupInvisible() {
         waitForElementInvisible(driver, ShoppingCartPageUI.SHIPPING_POPUP);
     }
+
+    @Step("Enter to quantity textbox {0}")
+    public void enterToQuantityTextbox(String quantity) {
+        waitForElementVisible(driver, ShoppingCartPageUI.QUANTITY_TEXTBOX);
+        sendkeyToElement(driver, ShoppingCartPageUI.QUANTITY_TEXTBOX, quantity);
+    }
 }

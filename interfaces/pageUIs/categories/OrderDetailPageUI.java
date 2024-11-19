@@ -27,4 +27,5 @@ public class OrderDetailPageUI {
     public static final String SUB_TOTAL_PRICE_IN_TOTAL_INFO = "xpath=//div[@class='total-info']//td/label[text()='Sub-Total:']/parent::td/following-sibling::td/span";
     public static final String TOTAL_PRICE_IN_TOTAL_INFO = "xpath=//div[@class='total-info']//td/label[text()='Order Total:']/parent::td/following-sibling::td/span";
     public static final String ORDER_TOTAL_OVERVIEW = "xpath=//ul[@class='order-overview-content']//li[@class='order-total']/strong";
+    public static final String REORDER_BUTTON = "xpath=//div[@class='section totals']//button[text()='Re-order']";
 }

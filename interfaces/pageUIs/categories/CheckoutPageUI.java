@@ -57,4 +57,5 @@ public class CheckoutPageUI {
     public static final String THANK_YOU_TITLE = "xpath=//div[@class='page checkout-page order-completed-page']/div[@class='page-title']";
     public static final String ORDER_SUCCESSFULLY_MESSAGE = "xpath=//div[@class='page checkout-page order-completed-page']//div[@class='section order-completed']/div[@class='title']";
     public static final String ORDER_NUMBER = "xpath=//div[@class='page checkout-page order-completed-page']//div[@class='order-number']";
+    public static final String BILLING_ADDRESS_DROPDOWN = "xpath=//select[@id='billing-address-select']";
 }
