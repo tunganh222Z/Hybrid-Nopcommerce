@@ -2,6 +2,7 @@ package commons;
 
 import org.openqa.selenium.WebDriver;
 import pageObjects.*;
+import pageObjects.admin.DashboardPageObject;
 import pageObjects.myAccount.*;
 import pageObjects.orderCheckout.CheckoutPageObject;
 import pageObjects.categories.*;
@@ -79,5 +80,11 @@ public class PageGenerator {
 
     public static OrderPageObject getOrderPage(WebDriver driver) {
         return new OrderPageObject(driver);
+    }
+
+    //
+
+    public static DashboardPageObject getDashboardPage(WebDriver driver){
+        return new DashboardPageObject(driver);
     }
 }
