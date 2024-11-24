@@ -1,4 +1,4 @@
-package pageUIs.admin;
+package pageUIs.admin.catalog;
 
 public class ProductsPageUI {
 }
